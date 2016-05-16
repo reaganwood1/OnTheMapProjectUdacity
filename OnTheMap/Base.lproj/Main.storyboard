@@ -9,7 +9,7 @@
         <!--LoginViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="LoginViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -32,14 +32,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9yT-8s-ToQ">
-                                <rect key="frame" x="20" y="372" width="560" height="30"/>
-                                <color key="backgroundColor" red="0.90196079019999997" green="0.35045809603371469" blue="0.15842778092775608" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Login">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to Udacity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nud-9u-mMm">
                                 <rect key="frame" x="220" y="253" width="161" height="27"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
@@ -52,6 +44,20 @@
                                 <state key="normal" title="Don't have an account? Sign Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="udacitySignUpFlow:" destination="BYZ-38-t0r" eventType="touchUpInside" id="igA-gr-Mgf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9yT-8s-ToQ">
+                                <rect key="frame" x="20" y="372" width="560" height="30"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.35045809603371469" blue="0.15842778092775608" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="LoginToUdacity:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4gi-eu-mxk"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.52741588694130193" blue="0.18633469286657756" alpha="1" colorSpace="calibratedRGB"/>
@@ -74,10 +80,47 @@
                             <constraint firstAttribute="trailingMargin" secondItem="nud-9u-mMm" secondAttribute="trailing" constant="199" id="r9f-wn-GWh"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="uxLoginButton" destination="9yT-8s-ToQ" id="zUJ-GZ-Dnj"/>
+                        <outlet property="uxUdacitySignUpButton" destination="oe6-cK-qgv" id="qox-60-i5H"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="245" y="349"/>
+        </scene>
+        <!--Udacity Authentication View Controller-->
+        <scene sceneID="boV-mD-Ae1">
+            <objects>
+                <viewController storyboardIdentifier="UdacityAuthenticationViewController" id="4hX-EE-NZZ" customClass="UdacityAuthenticationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Lmm-1V-yMH"/>
+                        <viewControllerLayoutGuide type="bottom" id="rX8-Hm-wKF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ag7-Yk-5Ko">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jfP-wg-9nB">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jfP-wg-9nB" firstAttribute="top" secondItem="ag7-Yk-5Ko" secondAttribute="topMargin" id="0eA-B4-9Wj"/>
+                            <constraint firstItem="rX8-Hm-wKF" firstAttribute="top" secondItem="jfP-wg-9nB" secondAttribute="bottom" id="2RL-FB-Haj"/>
+                            <constraint firstItem="jfP-wg-9nB" firstAttribute="leading" secondItem="ag7-Yk-5Ko" secondAttribute="leadingMargin" constant="-20" id="KrS-KC-dbB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jfP-wg-9nB" secondAttribute="trailing" constant="-20" id="esX-D9-QpY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="uxUdacityLoginWebView" destination="jfP-wg-9nB" id="fIe-Ja-CEk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JFe-kz-DEB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="245" y="1066"/>
         </scene>
     </scenes>
 </document>
