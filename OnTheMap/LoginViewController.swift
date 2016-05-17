@@ -13,6 +13,8 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var uxLoginButton: UIButton!
     @IBOutlet weak var uxUdacitySignUpButton: UIButton!
+    @IBOutlet weak var uxEmailLoginTextField: UITextField!
+    @IBOutlet weak var uxPasswordLoginTextField: UITextField!
     
     
     override func viewDidLoad() {
@@ -28,7 +30,28 @@ class LoginViewController: UIViewController {
     // single call to Login to the Udacity server
     @IBAction func LoginToUdacity(sender: AnyObject) {
         
+        loginToUdacityWithLoginAndPassword()
+        
     }
+    
+    func loginToUdacityWithLoginAndPassword(){
+        UdacityClient.sharedInstance().createLoginSessionWithUdacity(uxEmailLoginTextField.text!, password: uxPasswordLoginTextField.text!) { (sessionCreated, error) in
+            if (error == nil){
+                if (sessionCreated == true)
+                {
+                    print("yes")
+                } else {
+                    print ("session not created, error present")
+                }
+            }
+            else {
+                print("session not created")
+            }
+            
+        }
+    } // end function
+    
+    
     // Processes sender's request to sign up for a Udacity account
     @IBAction func udacitySignUpFlow(sender: AnyObject) {
         

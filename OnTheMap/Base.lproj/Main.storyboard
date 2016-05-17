@@ -81,7 +81,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="uxEmailLoginTextField" destination="ogi-O1-8Qi" id="xrr-zA-elj"/>
                         <outlet property="uxLoginButton" destination="9yT-8s-ToQ" id="zUJ-GZ-Dnj"/>
+                        <outlet property="uxPasswordLoginTextField" destination="ehk-sR-UL8" id="SBL-p8-Sui"/>
                         <outlet property="uxUdacitySignUpButton" destination="oe6-cK-qgv" id="qox-60-i5H"/>
                     </connections>
                 </viewController>
