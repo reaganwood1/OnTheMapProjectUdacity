@@ -40,7 +40,7 @@ class LoginViewController: UIViewController {
             if (error == nil){
                 if (sessionCreated == true)
                 {
-                    print("yes")
+                    self.getUserData()// finish the loginProcess by getting the user data
                 } else {
                     print ("session not created, error present")
                 }
@@ -52,6 +52,29 @@ class LoginViewController: UIViewController {
         }
     } // end function
     
+    func getUserData(){
+        UdacityClient.sharedInstance().getFirstAndLastName { (nameRetrieved, error) in
+            if (error == nil && nameRetrieved == true){
+                self.finishLogin()
+            } else {
+                print("name info was not retrived successfully")
+            }
+        }
+    }
+    // Finishes the login process to Udacity and displays the main view of the app
+    func finishLogin(){
+        
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) { () -> Void in
+            
+                // once you have this, run the handler completionHandler!
+                dispatch_async(dispatch_get_main_queue(), {()-> Void in
+                    UdacityClient.sharedInstance()
+                }) // end image main queue completion handler
+            
+        } // end closure
+        
+        
+    } // end function
     
     // Processes sender's request to sign up for a Udacity account
     @IBAction func udacitySignUpFlow(sender: AnyObject) {

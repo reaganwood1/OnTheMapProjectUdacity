@@ -15,11 +15,11 @@ extension UdacityClient {
         static let coreUdacitySignUpURL = "https://www.udacity.com/account/auth#!/signup"
         static let ApiScheme = "https"
         static let ApiHost = "www.udacity.com/api"
-        
     }
     
     struct Methods {
         static let Session = "session"
+        static let Users = "users/"
         //static let User = "users/<user_id>"
     } // end method
     
@@ -39,5 +39,8 @@ extension UdacityClient {
         static let Key = "key"
         static let SessionKey = "session"
         static let SessionID = "id"
+        static let FirstName = "first_name"
+        static let LastName = "last_name"
+        static let User = "user"
     }
 } // end extension

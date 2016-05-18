@@ -74,6 +74,49 @@ class UdacityClient: NSObject{
         return task
     }
     
+    // get method for gettting info from the udacity server
+    func taskForGETMethod (method: String, taskForGetHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionTask {
+        
+        let url = Constants.coreUdacityURL + method
+        let nsurl = NSURL (string: url)
+        
+        let request = NSURLRequest(URL: nsurl!)
+        let mutableRequest = NSMutableURLRequest(URL: nsurl!)
+        
+        print (url)
+        let task = session.dataTaskWithRequest(mutableRequest) { data, response, error in
+            
+            func sendError(error: String) {
+                print(error)
+                let userInfo = [NSLocalizedDescriptionKey: error]
+                taskForGetHandler(result: nil, error: NSError(domain: "taskForGetMethod", code: 1, userInfo: userInfo))
+            }
+            
+            guard (error == nil) else {
+                sendError("There was an error with your request: \(error)")
+                return
+            }
+            
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                sendError("Your request returned a status code other than 2xx!")
+                return
+            }
+            
+            guard let data = data else {
+                sendError("No data was returned by the request!")
+                return
+            }
+            
+            let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5))
+            self.parseJSONData(newData, completionHandler: taskForGetHandler)
+            
+        } // end task
+        
+        task.resume()
+        
+        return task
+    }
+    
     // function parses JSON data
     func parseJSONData (data: NSData, completionHandler: (result: AnyObject!, error: NSError?) -> Void) {
         

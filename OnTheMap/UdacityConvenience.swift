@@ -18,13 +18,12 @@ extension UdacityClient {
         
         // get post data
         taskForPostMethod(Methods.Session, jsonBody: jsonBody) { (result, error) in
-            print (result)
             // user post data
             if (error == nil){
-                if let sessionInfo = result[JSONResponseKeys.SessionKey] as? [String:AnyObject] {
-                    if let sessionid = sessionInfo[JSONResponseKeys.SessionID] as? String{
-                        completionHandler(sessionCreated: true, error: nil)
+                if let sessionInfo = result[JSONResponseKeys.Account] as? [String:AnyObject] {
+                    if let sessionid = sessionInfo[JSONResponseKeys.Key] as? String{
                         self.sessionID = sessionid
+                        completionHandler(sessionCreated: true, error: nil)
                     } else {
                         completionHandler(sessionCreated: false, error: "sessionKey not found")
                     }
@@ -36,4 +35,33 @@ extension UdacityClient {
             }
         } // end taskForPostMethod
     } // end createLoginSessionWithUdacity
+    
+    func getFirstAndLastName (completionHandler: (nameRetrieved: Bool, error: String?) -> Void) {
+        
+        let methods = UdacityClient.Methods.Users + sessionID!
+        
+        taskForGETMethod(methods) { (result, error) in
+            
+            if (error == nil) {
+                if let userInfo = result[JSONResponseKeys.User] as? [String:AnyObject] {
+                    if let firstName = userInfo[JSONResponseKeys.FirstName] as? String? {
+                        self.userFirstName = firstName // set the name data
+                        if let lastName = userInfo[JSONResponseKeys.LastName] as? String? {
+                            self.userLastname = lastName
+                            completionHandler(nameRetrieved: true, error: nil)
+                        } else {
+                            self.userFirstName = nil
+                            completionHandler(nameRetrieved: false, error: "first name retrived, but not the last name")
+                        }
+                    } else {
+                        completionHandler(nameRetrieved: false, error: "There was an error retrieving the first name")
+                    }
+                } else {
+                    completionHandler(nameRetrieved: false, error: "There was an error present parsing the name data")
+                }
+            } else {
+                completionHandler(nameRetrieved: false, error: "There was an error present from getting the name data")
+            } // end else
+        }
+    }
 }

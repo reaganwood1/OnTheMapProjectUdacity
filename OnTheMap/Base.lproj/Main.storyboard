@@ -134,7 +134,7 @@
         <!--On The Map-->
         <scene sceneID="Nb0-d8-MOu">
             <objects>
-                <viewController title="On The Map" id="lTy-Dk-sZM" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PinMapViewController" title="On The Map" id="lTy-Dk-sZM" customClass="PinMapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uwW-Ck-Mkh"/>
                         <viewControllerLayoutGuide type="bottom" id="a6u-ao-UsW"/>
