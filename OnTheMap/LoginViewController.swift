@@ -63,12 +63,18 @@ class LoginViewController: UIViewController {
     }
     // Finishes the login process to Udacity and displays the main view of the app
     func finishLogin(){
+
+        
         
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) { () -> Void in
             
                 // once you have this, run the handler completionHandler!
                 dispatch_async(dispatch_get_main_queue(), {()-> Void in
-                    UdacityClient.sharedInstance()
+                    
+                    // perform segue
+                    self.performSegueWithIdentifier("PresentMapTabView", sender: self)
+//                    let mapViewController = self.storyboard!.instantiateViewControllerWithIdentifier("PinMapViewController") as! PinMapViewController
+//                    self.navigationController!.pushViewController(mapViewController, animated: true)
                 }) // end image main queue completion handler
             
         } // end closure

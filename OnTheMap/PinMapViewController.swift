@@ -9,10 +9,13 @@
 import Foundation
 import UIKit
 import MapKit
-class PinMapViewController: UIViewController, MKMapViewDelegate {
 
+class PinMapViewController: UIViewController, MKMapViewDelegate{
+
+    @IBOutlet weak var mapView: MKMapView!
+    
     override func viewDidLoad() {
-        
+        super.viewDidLoad()
     }
     
     // TODO: finish

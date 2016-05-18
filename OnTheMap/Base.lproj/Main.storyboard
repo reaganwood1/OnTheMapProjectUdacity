@@ -90,6 +90,7 @@
                         <outlet property="uxLoginButton" destination="9yT-8s-ToQ" id="zUJ-GZ-Dnj"/>
                         <outlet property="uxPasswordLoginTextField" destination="ehk-sR-UL8" id="SBL-p8-Sui"/>
                         <outlet property="uxUdacitySignUpButton" destination="oe6-cK-qgv" id="qox-60-i5H"/>
+                        <segue destination="Cg4-t2-Bcf" kind="presentation" identifier="PresentMapTabView" id="m9Y-ol-Ub3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -117,7 +118,7 @@
         <!--On The Map-->
         <scene sceneID="o7i-fP-PoM">
             <objects>
-                <navigationController title="On The Map" id="5Kn-9e-npD" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MapUserLocationsNavController" title="On The Map" id="5Kn-9e-npD" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Map" image="MapIcon" id="jly-2S-Bmf"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eVs-se-5TP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -162,6 +163,9 @@
                             <barButtonItem image="PinIcon" id="hAc-pC-HoH"/>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="WYf-Pr-ddD" id="QAL-Ep-yKw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="irJ-ft-1sY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -199,7 +203,7 @@
         <!--List-->
         <scene sceneID="WlN-ZZ-h06">
             <objects>
-                <navigationController id="B5J-Ft-xPr" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ListUserLocationsNavController" id="B5J-Ft-xPr" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="List" image="ListIcon" id="KZw-jc-gjF"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hth-GI-gUZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
