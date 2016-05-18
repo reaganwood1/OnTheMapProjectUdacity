@@ -33,12 +33,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to Udacity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nud-9u-mMm">
-                                <rect key="frame" x="220" y="253" width="161" height="27"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oe6-cK-qgv">
                                 <rect key="frame" x="20" y="410" width="560" height="39"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
@@ -60,25 +54,35 @@
                                     <action selector="LoginToUdacity:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4gi-eu-mxk"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="UdacityIcon" translatesAutoresizingMaskIntoConstraints="NO" id="j2S-pa-ybn">
+                                <rect key="frame" x="180" y="117" width="240" height="128"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to Udacity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nud-9u-mMm">
+                                <rect key="frame" x="220" y="253" width="161" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.52741588694130193" blue="0.18633469286657756" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="oe6-cK-qgv" secondAttribute="leading" id="0xT-yG-yqc"/>
+                            <constraint firstItem="nud-9u-mMm" firstAttribute="top" secondItem="j2S-pa-ybn" secondAttribute="bottom" constant="8" id="5tn-ou-0Mi"/>
                             <constraint firstItem="ogi-O1-8Qi" firstAttribute="top" secondItem="nud-9u-mMm" secondAttribute="bottom" constant="16" id="7n3-yS-Fsh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ogi-O1-8Qi" secondAttribute="trailing" id="9EZ-oT-wk1"/>
                             <constraint firstAttribute="leadingMargin" secondItem="ehk-sR-UL8" secondAttribute="leading" id="9gf-g0-g0v"/>
+                            <constraint firstItem="nud-9u-mMm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9mT-07-VpU"/>
                             <constraint firstItem="ehk-sR-UL8" firstAttribute="top" secondItem="ogi-O1-8Qi" secondAttribute="bottom" constant="8" id="DYU-hB-wuy"/>
                             <constraint firstAttribute="leadingMargin" secondItem="9yT-8s-ToQ" secondAttribute="leading" id="MBA-yh-L5T"/>
                             <constraint firstItem="ogi-O1-8Qi" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="276" id="OIW-dK-nmc"/>
+                            <constraint firstItem="j2S-pa-ybn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ScV-DM-nW2"/>
                             <constraint firstAttribute="leadingMargin" secondItem="ogi-O1-8Qi" secondAttribute="leading" id="Xfg-q6-5Un"/>
                             <constraint firstAttribute="trailingMargin" secondItem="9yT-8s-ToQ" secondAttribute="trailing" id="ZH6-Qu-xtC"/>
                             <constraint firstItem="9yT-8s-ToQ" firstAttribute="top" secondItem="ehk-sR-UL8" secondAttribute="bottom" constant="8" id="bWt-r7-HuY"/>
                             <constraint firstItem="ogi-O1-8Qi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bkl-2J-E47"/>
-                            <constraint firstItem="nud-9u-mMm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="200" id="izg-Mg-jmY"/>
                             <constraint firstItem="oe6-cK-qgv" firstAttribute="top" secondItem="9yT-8s-ToQ" secondAttribute="bottom" constant="8" id="klw-Se-qn8"/>
                             <constraint firstAttribute="trailingMargin" secondItem="oe6-cK-qgv" secondAttribute="trailing" id="lrs-o8-tA2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ehk-sR-UL8" secondAttribute="trailing" id="mXK-2E-POr"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="nud-9u-mMm" secondAttribute="trailing" constant="199" id="r9f-wn-GWh"/>
                         </constraints>
                     </view>
                     <connections>
@@ -247,5 +251,6 @@
         <image name="ListIcon" width="32" height="32"/>
         <image name="MapIcon" width="32" height="32"/>
         <image name="PinIcon" width="32" height="32"/>
+        <image name="UdacityIcon" width="256" height="256"/>
     </resources>
 </document>
