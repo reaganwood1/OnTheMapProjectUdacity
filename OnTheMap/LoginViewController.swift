@@ -36,6 +36,7 @@ class LoginViewController: UIViewController {
     
     func loginToUdacityWithLoginAndPassword(){
         UdacityClient.sharedInstance().createLoginSessionWithUdacity(uxEmailLoginTextField.text!, password: uxPasswordLoginTextField.text!) { (sessionCreated, error) in
+            
             if (error == nil){
                 if (sessionCreated == true)
                 {
