@@ -98,12 +98,9 @@ class PinMapViewController: UIViewController, MKMapViewDelegate{
                     studentPoint.subtitle = udacityStudent.mediaURL!
                     
                     studentsLocations.append(studentPoint)
+                    mapView.addAnnotation(studentPoint)
                 }
             }
-        }
-        
-        if studentsLocations.count > 0 {
-            mapView.addAnnotations(studentsLocations)
         }
     }
     
