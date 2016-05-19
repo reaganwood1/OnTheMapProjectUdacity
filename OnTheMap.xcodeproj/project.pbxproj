@@ -21,6 +21,10 @@
 		7F850B461CEA3D0C00E5BCD1 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F850B451CEA3D0C00E5BCD1 /* GCDBlackBox.swift */; };
 		7FCC43B51CEC014A0052AD40 /* PinMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCC43B41CEC014A0052AD40 /* PinMapViewController.swift */; };
 		7FCC43B71CECF26D0052AD40 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FCC43B61CECF26D0052AD40 /* MapKit.framework */; };
+		7FCC43B91CECFC6E0052AD40 /* PARSEClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCC43B81CECFC6E0052AD40 /* PARSEClient.swift */; };
+		7FCC43BB1CECFC820052AD40 /* PARSEConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCC43BA1CECFC820052AD40 /* PARSEConvenience.swift */; };
+		7FCC43BD1CECFC9B0052AD40 /* PARSEConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCC43BC1CECFC9B0052AD40 /* PARSEConstants.swift */; };
+		7FCC43BF1CED05510052AD40 /* PARSEStudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCC43BE1CED05510052AD40 /* PARSEStudentInformation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +65,10 @@
 		7F850B451CEA3D0C00E5BCD1 /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		7FCC43B41CEC014A0052AD40 /* PinMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinMapViewController.swift; sourceTree = "<group>"; };
 		7FCC43B61CECF26D0052AD40 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		7FCC43B81CECFC6E0052AD40 /* PARSEClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PARSEClient.swift; sourceTree = "<group>"; };
+		7FCC43BA1CECFC820052AD40 /* PARSEConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PARSEConvenience.swift; sourceTree = "<group>"; };
+		7FCC43BC1CECFC9B0052AD40 /* PARSEConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PARSEConstants.swift; sourceTree = "<group>"; };
+		7FCC43BE1CED05510052AD40 /* PARSEStudentInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PARSEStudentInformation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +183,10 @@
 				7F850B3D1CEA200A00E5BCD1 /* UdacityClient.swift */,
 				7F850B3F1CEA201900E5BCD1 /* UdacityConvenience.swift */,
 				7F850B411CEA209300E5BCD1 /* UdacityAuthenticationViewController.swift */,
+				7FCC43B81CECFC6E0052AD40 /* PARSEClient.swift */,
+				7FCC43BA1CECFC820052AD40 /* PARSEConvenience.swift */,
+				7FCC43BE1CED05510052AD40 /* PARSEStudentInformation.swift */,
+				7FCC43BC1CECFC9B0052AD40 /* PARSEConstants.swift */,
 			);
 			name = Clients;
 			sourceTree = "<group>";
@@ -316,14 +328,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FCC43BF1CED05510052AD40 /* PARSEStudentInformation.swift in Sources */,
 				7F850B441CEA261400E5BCD1 /* LoginViewController.swift in Sources */,
 				7FCC43B51CEC014A0052AD40 /* PinMapViewController.swift in Sources */,
 				7F850B3E1CEA200A00E5BCD1 /* UdacityClient.swift in Sources */,
 				7F850B081CE8FE9E00E5BCD1 /* AppDelegate.swift in Sources */,
 				7F850B401CEA201900E5BCD1 /* UdacityConvenience.swift in Sources */,
+				7FCC43BD1CECFC9B0052AD40 /* PARSEConstants.swift in Sources */,
 				7F850B421CEA209300E5BCD1 /* UdacityAuthenticationViewController.swift in Sources */,
 				7F850B3C1CEA1FEA00E5BCD1 /* UdacityConstants.swift in Sources */,
+				7FCC43BB1CECFC820052AD40 /* PARSEConvenience.swift in Sources */,
 				7F850B461CEA3D0C00E5BCD1 /* GCDBlackBox.swift in Sources */,
+				7FCC43B91CECFC6E0052AD40 /* PARSEClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
