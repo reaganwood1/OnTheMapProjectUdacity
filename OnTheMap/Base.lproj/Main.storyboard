@@ -119,7 +119,7 @@
         <scene sceneID="o7i-fP-PoM">
             <objects>
                 <navigationController storyboardIdentifier="MapUserLocationsNavController" title="On The Map" id="5Kn-9e-npD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" image="MapIcon" id="jly-2S-Bmf"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Map" image="MapIcon" selectedImage="MapIcon" id="jly-2S-Bmf"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eVs-se-5TP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -157,13 +157,26 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="On The Map" id="bzI-i6-TiZ">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="4sg-z6-piK"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="4sg-z6-piK">
+                            <connections>
+                                <action selector="logoutOfMapButtonPressed:" destination="lTy-Dk-sZM" id="d2L-rC-lHt"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="refresh" id="yV0-wr-RRy"/>
-                            <barButtonItem image="PinIcon" id="hAc-pC-HoH"/>
+                            <barButtonItem systemItem="refresh" id="yV0-wr-RRy">
+                                <connections>
+                                    <action selector="refreshMapButtonPressed:" destination="lTy-Dk-sZM" id="FOt-8e-a5o"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="PinIcon" id="hAc-pC-HoH">
+                                <connections>
+                                    <action selector="PostToMapButtonPressed:" destination="lTy-Dk-sZM" id="xz0-55-pn0"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="logoutButton" destination="4sg-z6-piK" id="d25-az-EOY"/>
                         <outlet property="mapView" destination="WYf-Pr-ddD" id="QAL-Ep-yKw"/>
                     </connections>
                 </viewController>
@@ -171,46 +184,72 @@
             </objects>
             <point key="canvasLocation" x="2504" y="29"/>
         </scene>
-        <!--Root View Controller-->
-        <scene sceneID="TfC-80-bbV">
+        <!--On The Map-->
+        <scene sceneID="JT2-7D-N3r">
             <objects>
-                <tableViewController id="d06-86-RiK" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="aJp-ub-ezl">
+                <tableViewController id="Sq3-On-hCH" customClass="UdacityStudentListViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="QB1-dR-F4z" customClass="UdacityStudentViewController">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="6kt-ds-HkA">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="studentCell" textLabel="o7p-nh-Tcz" detailTextLabel="kHd-ge-YYa" imageView="eCB-d2-McN" style="IBUITableViewCellStyleSubtitle" id="roP-UV-dFP">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6kt-ds-HkA" id="7rU-jl-8CT">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="roP-UV-dFP" id="VuS-de-MiT">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="o7p-nh-Tcz">
+                                            <rect key="frame" x="62" y="6" width="31.5" height="19.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kHd-ge-YYa">
+                                            <rect key="frame" x="62" y="25.5" width="40.5" height="13.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="PinIcon" id="eCB-d2-McN">
+                                            <rect key="frame" x="15" y="5" width="32" height="32"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="d06-86-RiK" id="91n-1V-sc3"/>
-                            <outlet property="delegate" destination="d06-86-RiK" id="amZ-BK-yWB"/>
+                            <outlet property="dataSource" destination="Sq3-On-hCH" id="u8Z-xR-sIt"/>
+                            <outlet property="delegate" destination="Sq3-On-hCH" id="lQ5-hJ-cnH"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="afU-rn-JE6"/>
+                    <navigationItem key="navigationItem" title="On The Map" id="XzD-yh-TwJ">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="xCi-2V-YkZ"/>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="refresh" id="cvd-3b-2M9"/>
+                            <barButtonItem image="PinIcon" style="plain" id="MsU-YW-Hr4"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rTM-xr-5QB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Su-qC-06p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2609" y="738"/>
+            <point key="canvasLocation" x="2504" y="737"/>
         </scene>
         <!--List-->
         <scene sceneID="WlN-ZZ-h06">
             <objects>
                 <navigationController storyboardIdentifier="ListUserLocationsNavController" id="B5J-Ft-xPr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="List" image="ListIcon" id="KZw-jc-gjF"/>
+                    <tabBarItem key="tabBarItem" title="List" image="ListIcon" selectedImage="ListIcon" id="KZw-jc-gjF"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hth-GI-gUZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="d06-86-RiK" kind="relationship" relationship="rootViewController" id="ilh-vp-tCY"/>
+                        <segue destination="Sq3-On-hCH" kind="relationship" relationship="rootViewController" id="Qhe-Wp-pKO"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WXw-57-qBU" userLabel="First Responder" sceneMemberID="firstResponder"/>

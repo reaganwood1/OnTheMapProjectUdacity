@@ -13,6 +13,7 @@ import MapKit
 class PinMapViewController: UIViewController, MKMapViewDelegate{
 
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var logoutButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,7 @@ class PinMapViewController: UIViewController, MKMapViewDelegate{
         if pinView == nil {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             pinView!.canShowCallout = true
-            pinView!.pinColor = .Red
+            pinView!.pinTintColor = UIColor.redColor()
             pinView!.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
         }
         else {
@@ -60,6 +61,7 @@ class PinMapViewController: UIViewController, MKMapViewDelegate{
         retrieveAndDisplayStudentInfo()
         mapView.reloadInputViews()
     }
+    
     func retrieveAndDisplayStudentInfo() {
         
         PARSEClient.sharedInstance().getStudentInfo { (retrived, error) in
@@ -94,9 +96,8 @@ class PinMapViewController: UIViewController, MKMapViewDelegate{
                     studentPoint.title = "\(udacityStudent.firstName!) \(udacityStudent.lastName!)"
                     studentPoint.coordinate = studentLocation
                     studentPoint.subtitle = udacityStudent.mediaURL!
+                    
                     studentsLocations.append(studentPoint)
-                    
-                    
                 }
             }
         }
@@ -105,4 +106,23 @@ class PinMapViewController: UIViewController, MKMapViewDelegate{
             mapView.addAnnotations(studentsLocations)
         }
     }
+    
+    @IBAction func logoutOfMapButtonPressed(sender: AnyObject) {
+       
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) { () -> Void in
+            
+            dispatch_async(dispatch_get_main_queue(), {() -> Void in
+                
+                self.dismissViewControllerAnimated(true, completion: nil)
+                
+            })}
+    }
+    
+    @IBAction func PostToMapButtonPressed(sender: AnyObject) {
+    }
+    
+    @IBAction func refreshMapButtonPressed(sender: AnyObject) {
+    }
+    
+    
 }

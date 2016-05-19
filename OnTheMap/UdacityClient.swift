@@ -17,7 +17,6 @@ class UdacityClient: NSObject{
     var userFirstName: String? = nil
     var userLastname: String? = nil
     var sessionID: String? = nil
-    var key: String? = nil
     
     func taskForPostMethod(method: String, jsonBody: [String:[String:AnyObject]],completionHandlerForPOST:(result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionTask {
     

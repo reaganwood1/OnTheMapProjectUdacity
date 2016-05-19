@@ -36,6 +36,7 @@ extension UdacityClient {
         } // end taskForPostMethod
     } // end createLoginSessionWithUdacity
     
+    // Gets the first and last name of the individual logging in
     func getFirstAndLastName (completionHandler: (nameRetrieved: Bool, error: String?) -> Void) {
         
         let methods = UdacityClient.Methods.Users + sessionID!
@@ -63,5 +64,15 @@ extension UdacityClient {
                 completionHandler(nameRetrieved: false, error: "There was an error present from getting the name data")
             } // end else
         }
+    } // end function
+    
+    // function effectively logs out of Udacity
+    func logoutOfUdacity (completionHandlerForLogout: (loggedOut: Bool?) -> Void) {
+       
+        // reset all defaults
+        userLastname = nil
+        userFirstName = nil
+        sessionID = nil
+        
     }
 }
