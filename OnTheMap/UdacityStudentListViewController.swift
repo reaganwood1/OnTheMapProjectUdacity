@@ -30,4 +30,44 @@ class UdacityStudentListViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return PARSEClient.sharedInstance().udacityStudentInformation.count
     }
-}
+    
+    @IBAction func logoutButtonPressed(sender: AnyObject) {
+        
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) { () -> Void in
+            
+            dispatch_async(dispatch_get_main_queue(), {() -> Void in
+                
+                self.dismissViewControllerAnimated(true, completion: nil)
+                
+            })}
+    } // func
+    
+    @IBAction func refreshButtonPressed(sender: AnyObject) {
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) { () -> Void in
+            
+            dispatch_async(dispatch_get_main_queue(), {() -> Void in
+                
+                self.retrieveAndDisplayStudentInfo()
+                
+            })}
+    }
+    
+    func retrieveAndDisplayStudentInfo() {
+        
+        PARSEClient.sharedInstance().getStudentInfo { (retrived, error) in
+            
+            if (error == nil){
+                dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) { () -> Void in
+                    
+                    dispatch_async(dispatch_get_main_queue(), {() -> Void in
+                        
+                        self.tableView.reloadData()
+                        
+                    })}
+                
+            }else {
+                print(error)
+            } // end else
+        } // end parseClient
+    } // end func
+} // end class

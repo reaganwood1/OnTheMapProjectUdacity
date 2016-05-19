@@ -57,44 +57,44 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OnTheMap/PinMapViewController.swift"
-            timestampString = "485362995.114782"
+            filePath = "OnTheMap/UdacityStudentListViewController.swift"
+            timestampString = "485376151.809292"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
-            landmarkName = "logoutOfMapButtonPressed(_:)"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "retrieveAndDisplayStudentInfo()"
             landmarkType = "5">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "OnTheMap.PinMapViewController.logoutOfMapButtonPressed (Swift.AnyObject) -&gt; ()"
+                  symbolName = "OnTheMap.UdacityStudentListViewController.retrieveAndDisplayStudentInfo () -&gt; ()"
                   moduleName = "OnTheMap"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/reaganwood1/Documents/iOS_Applications/OnTheMap/OnTheMap/OnTheMap/OnTheMap/PinMapViewController.swift"
-                  timestampString = "485363007.842195"
+                  urlString = "file:///Users/reaganwood1/Documents/iOS_Applications/OnTheMap/OnTheMap/OnTheMap/OnTheMap/UdacityStudentListViewController.swift"
+                  timestampString = "485376397.484638"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "112"
-                  endingLineNumber = "112"
-                  offsetFromSymbolStart = "27">
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "16">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "OnTheMap.PinMapViewController.(logoutOfMapButtonPressed (Swift.AnyObject) -&gt; ()).(closure #1)"
+                  symbolName = "OnTheMap.UdacityStudentListViewController.(retrieveAndDisplayStudentInfo () -&gt; ()).(closure #1)"
                   moduleName = "OnTheMap"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator9.3.sdk/usr/include/dispatch/queue.h"
-                  timestampString = "485363007.842361"
+                  urlString = "file:///Users/reaganwood1/Documents/iOS_Applications/OnTheMap/OnTheMap/OnTheMap/OnTheMap/UdacityStudentListViewController.swift"
+                  timestampString = "485376397.486584"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "325"
-                  endingLineNumber = "325"
-                  offsetFromSymbolStart = "36">
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "61">
                </Location>
             </Locations>
          </BreakpointContent>

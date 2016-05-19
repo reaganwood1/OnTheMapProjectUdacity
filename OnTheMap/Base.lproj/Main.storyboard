@@ -34,7 +34,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oe6-cK-qgv">
-                                <rect key="frame" x="20" y="410" width="560" height="39"/>
+                                <rect key="frame" x="143" y="410" width="315" height="39"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Don't have an account? Sign Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -201,16 +201,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="o7p-nh-Tcz">
-                                            <rect key="frame" x="62" y="6" width="31.5" height="19.5"/>
+                                            <rect key="frame" x="62" y="6" width="35" height="19.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kHd-ge-YYa">
-                                            <rect key="frame" x="62" y="25.5" width="40.5" height="13.5"/>
+                                            <rect key="frame" x="62" y="25.5" width="40" height="13.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -228,9 +228,17 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="On The Map" id="XzD-yh-TwJ">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="xCi-2V-YkZ"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="xCi-2V-YkZ">
+                            <connections>
+                                <action selector="logoutButtonPressed:" destination="Sq3-On-hCH" id="xTT-j6-1AS"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="refresh" id="cvd-3b-2M9"/>
+                            <barButtonItem systemItem="refresh" id="cvd-3b-2M9">
+                                <connections>
+                                    <action selector="refreshButtonPressed:" destination="Sq3-On-hCH" id="AE5-Xy-TNh"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem image="PinIcon" style="plain" id="MsU-YW-Hr4"/>
                         </rightBarButtonItems>
                     </navigationItem>

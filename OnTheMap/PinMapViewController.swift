@@ -122,6 +122,14 @@ class PinMapViewController: UIViewController, MKMapViewDelegate{
     }
     
     @IBAction func refreshMapButtonPressed(sender: AnyObject) {
+        
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) { () -> Void in
+            
+            dispatch_async(dispatch_get_main_queue(), {() -> Void in
+                
+                self.retrieveAndDisplayStudentInfo()
+                
+            })}
     }
     
     
