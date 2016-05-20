@@ -302,6 +302,9 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="findOnMapButtonPressed:" destination="pPl-LB-Zq4" eventType="touchUpInside" id="POR-om-c9e"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Enter Your Location Here" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cvq-b0-BzN">
                                 <rect key="frame" x="0.0" y="160" width="600" height="355"/>
@@ -318,30 +321,79 @@
                                     <action selector="cancelButtonPressed:" destination="pPl-LB-Zq4" eventType="touchUpInside" id="lFc-Q7-fug"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jxd-i9-TiT">
+                                <rect key="frame" x="252" y="537" width="90" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="CgI-qG-lx4"/>
+                                    <constraint firstAttribute="height" constant="30" id="EFn-4g-8DZ"/>
+                                </constraints>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" red="0.1738221965" green="0.47553088240000002" blue="0.68521634620000005" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="submitButtonPressed:" destination="pPl-LB-Zq4" eventType="touchUpInside" id="CRz-gf-gDA"/>
+                                </connections>
+                            </button>
+                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Enter a Link to Share Here" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MXT-pc-jGB">
+                                <rect key="frame" x="0.0" y="58" width="600" height="102"/>
+                                <color key="backgroundColor" red="0.15686274509803921" green="0.49803921568627452" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="no"/>
+                                <dataDetectorType key="dataDetectorTypes" address="YES"/>
+                            </textView>
+                            <mapView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="t8J-bx-hdu">
+                                <rect key="frame" x="0.0" y="160" width="600" height="440"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" red="0.94152670028148733" green="0.94775641025641022" blue="0.93446500247612196" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Tuu-a5-xAI" firstAttribute="top" secondItem="cvq-b0-BzN" secondAttribute="bottom" constant="22" id="1Vr-c3-XSs"/>
+                            <constraint firstItem="MXT-pc-jGB" firstAttribute="leading" secondItem="DFG-Bo-rMo" secondAttribute="leadingMargin" constant="-20" id="4aW-g4-d1C"/>
                             <constraint firstItem="2TW-Qs-442" firstAttribute="top" secondItem="cvq-b0-BzN" secondAttribute="bottom" constant="85" id="6fN-d7-YE0"/>
+                            <constraint firstItem="cvq-b0-BzN" firstAttribute="top" secondItem="MXT-pc-jGB" secondAttribute="bottom" id="BD6-c5-y4r"/>
                             <constraint firstItem="HQM-Sk-vyp" firstAttribute="centerX" secondItem="DFG-Bo-rMo" secondAttribute="centerX" id="DXE-8l-H4g"/>
+                            <constraint firstItem="Jxd-i9-TiT" firstAttribute="centerX" secondItem="DFG-Bo-rMo" secondAttribute="centerX" id="GwA-WD-Pf3"/>
                             <constraint firstItem="HQM-Sk-vyp" firstAttribute="top" secondItem="g4T-VA-tVM" secondAttribute="bottom" constant="8" id="JVt-q0-0JH"/>
+                            <constraint firstItem="2TW-Qs-442" firstAttribute="top" secondItem="t8J-bx-hdu" secondAttribute="bottom" id="LeD-66-gij"/>
+                            <constraint firstItem="t8J-bx-hdu" firstAttribute="centerX" secondItem="DFG-Bo-rMo" secondAttribute="centerX" id="QRF-wM-jhx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MXT-pc-jGB" secondAttribute="trailing" constant="-20" id="SST-6q-XXb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="t8J-bx-hdu" secondAttribute="trailing" constant="-20" id="TvY-gQ-1bn"/>
                             <constraint firstItem="cvq-b0-BzN" firstAttribute="leading" secondItem="DFG-Bo-rMo" secondAttribute="leadingMargin" constant="-20" id="TyN-2C-dp0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="sH4-oh-cNf" secondAttribute="trailing" id="XVb-8g-qe2"/>
                             <constraint firstItem="Tuu-a5-xAI" firstAttribute="centerX" secondItem="DFG-Bo-rMo" secondAttribute="centerX" id="XXU-h8-jzn"/>
+                            <constraint firstItem="Jxd-i9-TiT" firstAttribute="top" secondItem="cvq-b0-BzN" secondAttribute="bottom" constant="22" id="aCF-sV-EkR"/>
                             <constraint firstItem="sH4-oh-cNf" firstAttribute="top" secondItem="waK-bC-mpj" secondAttribute="bottom" id="arH-mp-dbD"/>
                             <constraint firstItem="cvq-b0-BzN" firstAttribute="centerX" secondItem="DFG-Bo-rMo" secondAttribute="centerX" id="eV9-03-Zfi"/>
                             <constraint firstItem="cvq-b0-BzN" firstAttribute="top" secondItem="waK-bC-mpj" secondAttribute="bottom" constant="140" id="jaM-oP-Gxg"/>
                             <constraint firstItem="g4T-VA-tVM" firstAttribute="top" secondItem="7FO-h7-6KE" secondAttribute="bottom" constant="8" id="jwF-Ab-bIG"/>
                             <constraint firstItem="7FO-h7-6KE" firstAttribute="top" secondItem="waK-bC-mpj" secondAttribute="bottom" constant="41" id="nRi-0y-fPu"/>
                             <constraint firstItem="7FO-h7-6KE" firstAttribute="centerX" secondItem="DFG-Bo-rMo" secondAttribute="centerX" id="omR-Hh-lNJ"/>
+                            <constraint firstItem="t8J-bx-hdu" firstAttribute="leading" secondItem="DFG-Bo-rMo" secondAttribute="leadingMargin" constant="-20" id="onz-Qt-Nfs"/>
                             <constraint firstAttribute="trailingMargin" secondItem="cvq-b0-BzN" secondAttribute="trailing" constant="-20" id="sA8-Ua-dEd"/>
+                            <constraint firstItem="t8J-bx-hdu" firstAttribute="centerX" secondItem="DFG-Bo-rMo" secondAttribute="centerX" id="sVV-5M-of1"/>
                             <constraint firstItem="g4T-VA-tVM" firstAttribute="centerX" secondItem="DFG-Bo-rMo" secondAttribute="centerX" id="wnQ-BW-4tQ"/>
+                            <constraint firstItem="t8J-bx-hdu" firstAttribute="top" secondItem="MXT-pc-jGB" secondAttribute="bottom" id="wxE-ne-See"/>
+                            <constraint firstItem="MXT-pc-jGB" firstAttribute="top" secondItem="waK-bC-mpj" secondAttribute="bottom" constant="38" id="y8c-Dy-rM5"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="sH4-oh-cNf" id="aZs-zY-Lei"/>
                         <outlet property="findOnMapButton" destination="Tuu-a5-xAI" id="ska-L8-Sba"/>
                         <outlet property="locationTextView" destination="cvq-b0-BzN" id="mDf-qU-3Ek"/>
+                        <outlet property="secondViewMapView" destination="t8J-bx-hdu" id="OBf-ox-hhW"/>
+                        <outlet property="secondViewSubmitButton" destination="Jxd-i9-TiT" id="P5J-JK-kRj"/>
+                        <outlet property="secondViewTextView" destination="MXT-pc-jGB" id="oHb-s2-lBA"/>
+                        <outlet property="studyingLabel" destination="g4T-VA-tVM" id="nan-F2-UUp"/>
+                        <outlet property="todayLabel" destination="HQM-Sk-vyp" id="tyS-l4-5rC"/>
+                        <outlet property="whereAreYouLabel" destination="7FO-h7-6KE" id="1iF-BV-GPj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IQd-1c-i1z" userLabel="First Responder" sceneMemberID="firstResponder"/>
