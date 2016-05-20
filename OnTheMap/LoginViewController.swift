@@ -53,6 +53,7 @@ class LoginViewController: UIViewController {
     } // end function
     
     func getUserData(){
+        
         UdacityClient.sharedInstance().getFirstAndLastName { (nameRetrieved, error) in
             if (error == nil && nameRetrieved == true){
                 self.finishLogin()
@@ -61,6 +62,7 @@ class LoginViewController: UIViewController {
             }
         }
     }
+    
     // Finishes the login process to Udacity and displays the main view of the app
     func finishLogin(){
 

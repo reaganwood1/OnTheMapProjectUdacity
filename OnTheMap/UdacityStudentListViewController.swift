@@ -70,4 +70,10 @@ class UdacityStudentListViewController: UITableViewController {
             } // end else
         } // end parseClient
     } // end func
+    
+    @IBAction func addLocationButtonPushed(sender: AnyObject) {
+        
+        self.performSegueWithIdentifier("PresentInformationView", sender: self)
+    }
+    
 } // end class

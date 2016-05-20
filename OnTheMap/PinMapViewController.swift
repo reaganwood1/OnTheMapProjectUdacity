@@ -116,6 +116,9 @@ class PinMapViewController: UIViewController, MKMapViewDelegate{
     }
     
     @IBAction func PostToMapButtonPressed(sender: AnyObject) {
+        
+        // perform segue
+        self.performSegueWithIdentifier("PresentInformationView", sender: self)
     }
     
     @IBAction func refreshMapButtonPressed(sender: AnyObject) {

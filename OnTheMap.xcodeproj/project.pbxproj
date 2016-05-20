@@ -26,6 +26,7 @@
 		7FCC43BD1CECFC9B0052AD40 /* PARSEConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCC43BC1CECFC9B0052AD40 /* PARSEConstants.swift */; };
 		7FCC43BF1CED05510052AD40 /* PARSEStudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCC43BE1CED05510052AD40 /* PARSEStudentInformation.swift */; };
 		7FCC43C11CED4D400052AD40 /* UdacityStudentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCC43C01CED4D400052AD40 /* UdacityStudentListViewController.swift */; };
+		7FCC43C31CEF70100052AD40 /* InformationPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCC43C21CEF70100052AD40 /* InformationPostingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		7FCC43BC1CECFC9B0052AD40 /* PARSEConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PARSEConstants.swift; sourceTree = "<group>"; };
 		7FCC43BE1CED05510052AD40 /* PARSEStudentInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PARSEStudentInformation.swift; sourceTree = "<group>"; };
 		7FCC43C01CED4D400052AD40 /* UdacityStudentListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityStudentListViewController.swift; sourceTree = "<group>"; };
+		7FCC43C21CEF70100052AD40 /* InformationPostingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationPostingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 				7F850B431CEA261400E5BCD1 /* LoginViewController.swift */,
 				7FCC43B41CEC014A0052AD40 /* PinMapViewController.swift */,
 				7FCC43C01CED4D400052AD40 /* UdacityStudentListViewController.swift */,
+				7FCC43C21CEF70100052AD40 /* InformationPostingViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				7F850B441CEA261400E5BCD1 /* LoginViewController.swift in Sources */,
 				7FCC43B51CEC014A0052AD40 /* PinMapViewController.swift in Sources */,
 				7F850B3E1CEA200A00E5BCD1 /* UdacityClient.swift in Sources */,
+				7FCC43C31CEF70100052AD40 /* InformationPostingViewController.swift in Sources */,
 				7F850B081CE8FE9E00E5BCD1 /* AppDelegate.swift in Sources */,
 				7FCC43C11CED4D400052AD40 /* UdacityStudentListViewController.swift in Sources */,
 				7F850B401CEA201900E5BCD1 /* UdacityConvenience.swift in Sources */,
