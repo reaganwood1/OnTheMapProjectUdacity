@@ -24,13 +24,20 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate, UIT
     }
     
     func textViewDidBeginEditing(textView: UITextView) {
-        
-        locationTextView.text = ""
+        if (locationTextView.text == "Enter Your Location Here"){
+            locationTextView.text = ""
+        }
         locationTextView.textAlignment = .Left
     }
     
     func textViewDidEndEditing(textView: UITextView) {
         // reposition the text at the end of editing
         locationTextView.textAlignment = .Center
+    }
+   
+    // dismissed the current view controller and presents the previous view
+    @IBAction func cancelButtonPressed(sender: AnyObject) {
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
