@@ -60,7 +60,21 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate, UIT
     
     @IBAction func submitButtonPressed(sender: AnyObject) {
         
-    }
+        if (secondViewTextView.text != "Enter a Link to Share Here") {
+            submitInfoToParse({ (success, error) in
+                if let error = error {
+                    print("error present!")
+                } else { //end if
+                    // TODO: Present the other view controller
+                }// end else
+            }) // end closure
+        } // end if
+        
+    } // end function
+    
+    func submitInfoToParse (completionHandlerForParse: (success: Bool, error: NSError?) -> Void) {
+        
+    } // end function
     
     @IBAction func findOnMapButtonPressed(sender: AnyObject) {
         
