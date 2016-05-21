@@ -22,6 +22,8 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate, UIT
     @IBOutlet weak var studyingLabel: UILabel!
     @IBOutlet weak var todayLabel: UILabel!
     
+    var located: CLLocation? = nil
+    
     override func viewDidLoad() {
         
         // set locationTextView delegate
@@ -61,16 +63,74 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate, UIT
     }
     
     @IBAction func findOnMapButtonPressed(sender: AnyObject) {
-        secondViewMapView.hidden = false
-        secondViewTextView.hidden = false
-        secondViewSubmitButton.hidden = false
-        findOnMapButton.hidden = true
-        locationTextView.hidden = true
-        whereAreYouLabel.hidden = true
-        studyingLabel.hidden = true
-        todayLabel.hidden = true
-        self.view.bringSubviewToFront(secondViewSubmitButton)
-        view.backgroundColor = UIColor(red:0.16, green:0.5, blue:0.67, alpha:1.0)
-        cancelButton.titleLabel?.textColor = UIColor.whiteColor()
+        
+        geoCodeLocation(locationTextView.text) { (success, error) in
+            if (error == nil && success == true){
+                self.secondViewMapView.hidden = false
+                self.secondViewTextView.hidden = false
+                self.secondViewSubmitButton.hidden = false
+                self.findOnMapButton.hidden = true
+                self.locationTextView.hidden = true
+                self.whereAreYouLabel.hidden = true
+                self.studyingLabel.hidden = true
+                self.todayLabel.hidden = true
+                self.view.bringSubviewToFront(self.secondViewSubmitButton)
+                self.view.backgroundColor = UIColor(red:0.16, green:0.5, blue:0.67, alpha:1.0)
+                self.cancelButton.titleLabel?.textColor = UIColor.whiteColor()
+                self.zoomToLocation()
+            }else {
+                print("display message here for non-correct output")
+            }
+        }
+    } // end function
+    
+    
+    func zoomToLocation() {
+        AddAnnotation()
+        var location = located?.coordinate
+        var span = MKCoordinateSpanMake(0.002, 0.002)
+        var region = MKCoordinateRegion(center: location!, span: span)
+        secondViewMapView.setRegion(region, animated: true)
+        
+    } // end function
+    
+    func AddAnnotation () {
+        
+        // The lat and long are used to create a CLLocationCoordinates2D instance.
+        let coordinate = located?.coordinate
+        
+        let first = UdacityClient.sharedInstance().userFirstName
+        let last = UdacityClient.sharedInstance().userLastname
+        let mediaURL = ""
+        
+        // Here we create the annotation and set its coordiate, title, and subtitle properties
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate!
+        annotation.title = "\(first) \(last)"
+        annotation.subtitle = mediaURL
+    
+    // When the array is complete, we add the annotations to the map.
+    self.secondViewMapView.addAnnotation(annotation)
+    
     }
+    // Geocode the string entered by the use
+    func geoCodeLocation(stringForGeoCode: String, completionHandler: (success: Bool, error: NSError?)-> Void) {
+        
+        
+        let CLGeocode = CLGeocoder()
+        
+        CLGeocode.geocodeAddressString(stringForGeoCode) { placemarks, error in
+            
+            if (error == nil){
+                self.located = placemarks!.first?.location!
+                completionHandler(success: true, error: nil)
+                
+            } else {
+
+                completionHandler(success: false, error: error)
+                
+            } // end else
+        } // end completion handler
+        
+    } // end function
 }
