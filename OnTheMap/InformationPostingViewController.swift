@@ -81,7 +81,10 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate, UIT
         let doubleLon = coordinate!.longitude
         let name = "\(UdacityClient.sharedInstance().userLastname) \(UdacityClient.sharedInstance().userLastname)"
         PARSEClient.sharedInstance().sendToParseServerUpdatedStudentInfo(doubleLat, name: name, locationString: stringLocation!, mediaURL: secondViewTextView.text, longitude: doubleLon) { (success, error) in
-            print("yes")
+            
+            if (error == nil){
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
         }
     } // end function
     

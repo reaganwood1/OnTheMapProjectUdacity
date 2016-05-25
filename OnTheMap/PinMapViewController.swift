@@ -120,8 +120,30 @@ class PinMapViewController: UIViewController, MKMapViewDelegate{
     
     @IBAction func PostToMapButtonPressed(sender: AnyObject) {
         
-        // perform segue
-        self.performSegueWithIdentifier("PresentInformationView", sender: self)
+        if (PARSEClient.sharedInstance().objectID == nil){
+            self.performSegueWithIdentifier("PresentInformationView", sender: self)
+        } else {
+            
+            AskToOverWrite({ (overwrite) in
+                if (overwrite == true){
+                    self.performSegueWithIdentifier("PresentInformationView", sender: self)
+                }
+            })
+        }
+    }
+    
+    func AskToOverWrite(completionHandlerForOverWrite: (overwrite: Bool) -> Void){
+        
+        let name = UdacityClient.sharedInstance().userFirstName! + " " + UdacityClient.sharedInstance().userLastname!
+        let alert = UIAlertController(title: "", message: "User \(name) Has Already Posted a Student Location. Would You Like to Overwrite Their Location?", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { action in
+            completionHandlerForOverWrite(overwrite: false)
+        }))
+        alert.addAction(UIAlertAction(title: "Overwrite", style: .Destructive, handler: { action in
+            completionHandlerForOverWrite(overwrite: true)
+        }))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     @IBAction func refreshMapButtonPressed(sender: AnyObject) {
@@ -130,8 +152,8 @@ class PinMapViewController: UIViewController, MKMapViewDelegate{
             
             dispatch_async(dispatch_get_main_queue(), {() -> Void in
                 
-                self.retrieveAndDisplayStudentInfo()
-                
+              
+                    self.retrieveAndDisplayStudentInfo()
             })}
     }
     

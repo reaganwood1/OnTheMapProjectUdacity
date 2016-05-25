@@ -66,7 +66,7 @@ extension PARSEClient {
         
         taskForPutMethod(methods, jsonBody: jsonBody) { (data, error) in
             if (error == nil){
-                print("success")
+                completionHandlerPostSuccess(success: true, error: nil)
             }else {
                 completionHandlerPostSuccess(success: false, error: "error")
             }

@@ -128,7 +128,7 @@ class PARSEClient: NSObject {
         catch {
             print ("json error: \(error)")
         }
-//        request.HTTPBody = "{\"uniqueKey\": \"\(UdacityClient.sharedInstance().sessionID)\", \"firstName\": \"Reagan\", \"lastName\": \"Wood\",\"mapString\": \"Oklahoma\", \"mediaURL\": \"https://udacity.com\",\"latitude\": 35.7324119, \"longitude\": -97.3867978}".dataUsingEncoding(NSUTF8StringEncoding)
+
         
         let task = session.dataTaskWithRequest(request) { data, response, error in
             
@@ -168,7 +168,6 @@ class PARSEClient: NSObject {
         var parsedResult: AnyObject!
         do {
             parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
-            print (parsedResult)
             completionHandler(result: parsedResult, error: nil)
         } catch {
             let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]
