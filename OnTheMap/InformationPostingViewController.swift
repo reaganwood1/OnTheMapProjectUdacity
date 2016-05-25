@@ -80,12 +80,26 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate, UIT
         let doubleLat = coordinate!.latitude
         let doubleLon = coordinate!.longitude
         let name = "\(UdacityClient.sharedInstance().userLastname) \(UdacityClient.sharedInstance().userLastname)"
-        PARSEClient.sharedInstance().sendToParseServerUpdatedStudentInfo(doubleLat, name: name, locationString: stringLocation!, mediaURL: secondViewTextView.text, longitude: doubleLon) { (success, error) in
-            
-            if (error == nil){
-                self.dismissViewControllerAnimated(true, completion: nil)
-            }
-        }
+        if (PARSEClient.sharedInstance().objectID == nil) {
+            PARSEClient.sharedInstance().sendToParseServerStudentInfo(doubleLat, name: name, locationString: stringLocation!, mediaURL: secondViewTextView.text, longitude: doubleLon) { (success, error) in
+                
+                if (error == nil) {
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                } else {
+                    print("You need to display an alert view saying what went wrong here")
+                }
+            } // end sendToParseServerStudentInfo
+        }else {
+            PARSEClient.sharedInstance().sendToParseServerUpdatedStudentInfo(doubleLat, name: name, locationString: stringLocation!, mediaURL: secondViewTextView.text, longitude: doubleLon) { (success, error) in
+                
+                if (error == nil){
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                } else {
+                    print("you need to display an alert view saying what went wrong here")
+                }
+            } // end sendToParseServerUpdatedStudentInfo
+        } // end else
+        
     } // end function
     
     @IBAction func findOnMapButtonPressed(sender: AnyObject) {
