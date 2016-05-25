@@ -36,7 +36,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func LoginToUdacity(sender: AnyObject) {
         
         if (uxPasswordLoginTextField.text == "" || uxEmailLoginTextField.text == "" || uxPasswordLoginTextField.text == "Password" || uxEmailLoginTextField.text == "Email") {
-            displayEmptyAlert()
+            displayEmptyAlert("", message: "Empty Email or Password", actionTitle: "Dismiss")
         }
         loginToUdacityWithLoginAndPassword()
         
@@ -64,14 +64,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    func displayEmptyAlert(){
+    func displayEmptyAlert(headTitle: String?, message: String?, actionTitle: String?){
         
-        let alert = UIAlertController(title: "", message: "Empty Email or Password", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: { action in
+        
+        // once you have this, run the handler completionHandler!
+        dispatch_async(dispatch_get_main_queue(), {()-> Void in
             
-        }))
-        self.presentViewController(alert, animated: true, completion: nil)
-        
+            let alert = UIAlertController(title: headTitle, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: actionTitle, style: .Default, handler: { action in
+                
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)
+           
+        }) // end image main queue completion handler
     }
     
     func loginToUdacityWithLoginAndPassword(){
@@ -82,11 +87,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 {
                     self.getUserData()// finish the loginProcess by getting the user data
                 } else {
-                    print ("session not created, error present")
+                    self.displayEmptyAlert("", message: "Invalid Email or Password", actionTitle: "Dismiss")
                 }
             }
             else {
-                print("session not created")
+                self.displayEmptyAlert("", message: "Invalid Email or Password", actionTitle: "Dismiss")
             }
             
         }
