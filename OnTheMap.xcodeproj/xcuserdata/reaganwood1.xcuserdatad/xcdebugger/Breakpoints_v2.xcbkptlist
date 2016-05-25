@@ -74,12 +74,12 @@
                   moduleName = "OnTheMap"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/reaganwood1/Documents/iOS_Applications/OnTheMap/OnTheMap/OnTheMap/OnTheMap/UdacityStudentListViewController.swift"
-                  timestampString = "485489469.697476"
+                  timestampString = "485896593.074034"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "57"
                   endingLineNumber = "57"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "23">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -89,12 +89,12 @@
                   moduleName = "OnTheMap"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/reaganwood1/Documents/iOS_Applications/OnTheMap/OnTheMap/OnTheMap/OnTheMap/UdacityStudentListViewController.swift"
-                  timestampString = "485489469.6976"
+                  timestampString = "485896593.074333"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "59"
                   endingLineNumber = "59"
-                  offsetFromSymbolStart = "61">
+                  offsetFromSymbolStart = "67">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OnTheMap/InformationPostingViewController.swift"
-            timestampString = "485489449.070865"
+            timestampString = "485550437.052502"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "textViewDidBeginEditing(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -121,14 +121,174 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OnTheMap/InformationPostingViewController.swift"
-            timestampString = "485491516.290676"
+            filePath = "OnTheMap/PARSEClient.swift"
+            timestampString = "485893646.921821"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "findOnMapButtonPressed(_:)"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "taskForPostMethod(_:jsonBody:completionHandlerForPost:)"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OnTheMap/PARSEClient.swift"
+            timestampString = "485893646.921821"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "taskForPostMethod(_:jsonBody:completionHandlerForPost:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OnTheMap/PARSEClient.swift"
+            timestampString = "485893646.921821"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "taskForPutMethod(_:jsonBody:completionHandlerForPut:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OnTheMap/PARSEConvenience.swift"
+            timestampString = "485893816.155247"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "sendToParseServerUpdatedStudentInfo(_:name:locationString:mediaURL:longitude:completionHandlerPostSuccess:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OnTheMap/PARSEClient.swift"
+            timestampString = "485894314.367205"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "taskForPutMethod(_:jsonBody:completionHandlerForPut:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OnTheMap.PARSEClient.taskForPutMethod (Swift.Optional&lt;Swift.String&gt;, jsonBody : Swift.Dictionary&lt;Swift.String, Swift.ImplicitlyUnwrappedOptional&lt;Swift.AnyObject&gt;&gt;, completionHandlerForPut : (data : Swift.ImplicitlyUnwrappedOptional&lt;Swift.AnyObject&gt;, error : Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; __ObjC.NSURLSessionTask"
+                  moduleName = "OnTheMap"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/reaganwood1/Documents/iOS_Applications/OnTheMap/OnTheMap/OnTheMap/OnTheMap/PARSEClient.swift"
+                  timestampString = "485896593.07776"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "133"
+                  endingLineNumber = "133"
+                  offsetFromSymbolStart = "2497">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OnTheMap.PARSEClient.(taskForPutMethod (Swift.Optional&lt;Swift.String&gt;, jsonBody : Swift.Dictionary&lt;Swift.String, Swift.ImplicitlyUnwrappedOptional&lt;Swift.AnyObject&gt;&gt;, completionHandlerForPut : (data : Swift.ImplicitlyUnwrappedOptional&lt;Swift.AnyObject&gt;, error : Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; __ObjC.NSURLSessionTask).(closure #1)"
+                  moduleName = "OnTheMap"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/reaganwood1/Documents/iOS_Applications/OnTheMap/OnTheMap/OnTheMap/OnTheMap/PARSEClient.swift"
+                  timestampString = "485896593.077886"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "141"
+                  endingLineNumber = "141"
+                  offsetFromSymbolStart = "57">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OnTheMap/PARSEClient.swift"
+            timestampString = "485896166.312118"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
+            landmarkName = "taskForPutMethod(_:jsonBody:completionHandlerForPut:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OnTheMap/PARSEClient.swift"
+            timestampString = "485896639.919786"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "taskForPutMethod(_:jsonBody:completionHandlerForPut:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OnTheMap.PARSEClient.(taskForPutMethod (Swift.Optional&lt;Swift.String&gt;, jsonBody : Swift.Dictionary&lt;Swift.String, Swift.ImplicitlyUnwrappedOptional&lt;Swift.AnyObject&gt;&gt;, completionHandlerForPut : (data : Swift.ImplicitlyUnwrappedOptional&lt;Swift.AnyObject&gt;, error : Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; __ObjC.NSURLSessionTask).(closure #1)"
+                  moduleName = "OnTheMap"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/reaganwood1/Documents/iOS_Applications/OnTheMap/OnTheMap/OnTheMap/OnTheMap/PARSEClient.swift"
+                  timestampString = "485896639.921712"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "146"
+                  endingLineNumber = "146"
+                  offsetFromSymbolStart = "166">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OnTheMap.PARSEClient.(taskForPutMethod (Swift.Optional&lt;Swift.String&gt;, jsonBody : Swift.Dictionary&lt;Swift.String, Swift.ImplicitlyUnwrappedOptional&lt;Swift.AnyObject&gt;&gt;, completionHandlerForPut : (data : Swift.ImplicitlyUnwrappedOptional&lt;Swift.AnyObject&gt;, error : Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; __ObjC.NSURLSessionTask).(closure #1)"
+                  moduleName = "OnTheMap"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/reaganwood1/Documents/iOS_Applications/OnTheMap/OnTheMap/OnTheMap/OnTheMap/PARSEClient.swift"
+                  timestampString = "485896639.921892"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "146"
+                  endingLineNumber = "146"
+                  offsetFromSymbolStart = "417">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

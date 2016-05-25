@@ -39,4 +39,38 @@ extension PARSEClient {
         
         return udacityStudents
     }
-}
+    
+    func sendToParseServerStudentInfo(latitude: Double?, name: String?, locationString: String?, mediaURL: String?, longitude: Double?, completionHandlerPostSuccess: (success: Bool, error: String?) -> Void){
+        
+        let methods = Methods.StudentLocations
+        
+        var jsonBody: [String: AnyObject]
+        jsonBody = [JSONResponseKeys.UniqueKey: UdacityClient.sharedInstance().sessionID!, JSONResponseKeys.FirstName: UdacityClient.sharedInstance().userFirstName!, JSONResponseKeys.LastName:UdacityClient.sharedInstance().userLastname!, JSONResponseKeys.MapString:  locationString!, JSONResponseKeys.MediaURL: mediaURL!, JSONResponseKeys.Latitude: latitude!, JSONResponseKeys.Longitude: longitude!]
+    
+        taskForPostMethod(methods, jsonBody: jsonBody) { (data, error) in
+            if (error == nil){
+                print("success")
+            }else {
+                completionHandlerPostSuccess(success: false, error: "error")
+            }
+        }
+        
+    } // end function
+    
+    func sendToParseServerUpdatedStudentInfo(latitude: Double?, name: String?, locationString: String?, mediaURL: String?, longitude: Double?, completionHandlerPostSuccess: (success: Bool, error: String?) -> Void){
+        
+        let methods = Methods.StudentLocations + "/" + objectID!
+        print(methods)
+        var jsonBody: [String: AnyObject]
+        jsonBody = [JSONResponseKeys.UniqueKey: UdacityClient.sharedInstance().sessionID!, JSONResponseKeys.FirstName: UdacityClient.sharedInstance().userFirstName!, JSONResponseKeys.LastName:UdacityClient.sharedInstance().userLastname!, JSONResponseKeys.MapString:  locationString!, JSONResponseKeys.MediaURL: mediaURL!, JSONResponseKeys.Latitude: latitude!, JSONResponseKeys.Longitude: longitude!]
+        
+        taskForPutMethod(methods, jsonBody: jsonBody) { (data, error) in
+            if (error == nil){
+                print("success")
+            }else {
+                completionHandlerPostSuccess(success: false, error: "error")
+            }
+        }
+        
+    }
+} // end class

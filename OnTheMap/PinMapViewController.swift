@@ -89,6 +89,10 @@ class PinMapViewController: UIViewController, MKMapViewDelegate{
             
             let studentPoint = MKPointAnnotation()
             
+            if (udacityStudent.firstName == UdacityClient.sharedInstance().userFirstName && udacityStudent.lastName == UdacityClient.sharedInstance().userLastname) {
+                PARSEClient.sharedInstance().objectID = udacityStudent.objectID!
+            }
+            
             if let longitude = udacityStudent.longitude {
                 if let latitude = udacityStudent.latitude {
                     let studentLocation = CLLocationCoordinate2DMake(latitude, longitude)
@@ -96,7 +100,6 @@ class PinMapViewController: UIViewController, MKMapViewDelegate{
                     studentPoint.title = "\(udacityStudent.firstName!) \(udacityStudent.lastName!)"
                     studentPoint.coordinate = studentLocation
                     studentPoint.subtitle = udacityStudent.mediaURL!
-                    
                     studentsLocations.append(studentPoint)
                     mapView.addAnnotation(studentPoint)
                 }

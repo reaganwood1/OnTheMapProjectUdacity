@@ -23,6 +23,7 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate, UIT
     @IBOutlet weak var todayLabel: UILabel!
     
     var located: CLLocation? = nil
+    var stringLocation: String? = ""
     
     override func viewDidLoad() {
         
@@ -60,7 +61,7 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate, UIT
     
     @IBAction func submitButtonPressed(sender: AnyObject) {
         
-        if (secondViewTextView.text != "Enter a Link to Share Here") {
+        if (secondViewTextView.text != "Enter a Link to Share Here" || secondViewTextView.text != "") {
             submitInfoToParse({ (success, error) in
                 if let error = error {
                     print("error present!")
@@ -72,14 +73,23 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate, UIT
         
     } // end function
     
+    
     func submitInfoToParse (completionHandlerForParse: (success: Bool, error: NSError?) -> Void) {
         
+        let coordinate = located?.coordinate
+        let doubleLat = coordinate!.latitude
+        let doubleLon = coordinate!.longitude
+        let name = "\(UdacityClient.sharedInstance().userLastname) \(UdacityClient.sharedInstance().userLastname)"
+        PARSEClient.sharedInstance().sendToParseServerUpdatedStudentInfo(doubleLat, name: name, locationString: stringLocation!, mediaURL: secondViewTextView.text, longitude: doubleLon) { (success, error) in
+            print("yes")
+        }
     } // end function
     
     @IBAction func findOnMapButtonPressed(sender: AnyObject) {
         
         geoCodeLocation(locationTextView.text) { (success, error) in
             if (error == nil && success == true){
+                self.stringLocation = self.locationTextView.text
                 self.secondViewMapView.hidden = false
                 self.secondViewTextView.hidden = false
                 self.secondViewSubmitButton.hidden = false
