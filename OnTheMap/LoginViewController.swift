@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var uxLoginButton: UIButton!
     @IBOutlet weak var uxUdacitySignUpButton: UIButton!
@@ -19,6 +19,11 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        uxEmailLoginTextField.delegate = self
+        uxPasswordLoginTextField.delegate = self
+        uxPasswordLoginTextField.secureTextEntry = false
+        uxPasswordLoginTextField.tag = 1
+        uxEmailLoginTextField.tag = 2
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -30,7 +35,42 @@ class LoginViewController: UIViewController {
     // single call to Login to the Udacity server
     @IBAction func LoginToUdacity(sender: AnyObject) {
         
+        if (uxPasswordLoginTextField.text == "" || uxEmailLoginTextField.text == "" || uxPasswordLoginTextField.text == "Password" || uxEmailLoginTextField.text == "Email") {
+            displayEmptyAlert()
+        }
         loginToUdacityWithLoginAndPassword()
+        
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if (textField.tag == 1){
+            textField.secureTextEntry = true
+        }
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        
+        if (textField.tag == 1) {
+            if (textField.text == ""){
+                textField.text = "Password"
+                textField.secureTextEntry = false
+            }
+        } else if (textField.tag == 2) {
+            if (textField.text == ""){
+                textField.text = "Email"
+            }
+        }
+        
+        
+    }
+    
+    func displayEmptyAlert(){
+        
+        let alert = UIAlertController(title: "", message: "Empty Email or Password", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: { action in
+            
+        }))
+        self.presentViewController(alert, animated: true, completion: nil)
         
     }
     
