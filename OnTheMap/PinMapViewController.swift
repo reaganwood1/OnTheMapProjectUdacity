@@ -134,16 +134,21 @@ class PinMapViewController: UIViewController, MKMapViewDelegate{
     
     func AskToOverWrite(completionHandlerForOverWrite: (overwrite: Bool) -> Void){
         
-        let name = UdacityClient.sharedInstance().userFirstName! + " " + UdacityClient.sharedInstance().userLastname!
-        let alert = UIAlertController(title: "", message: "User \(name) Has Already Posted a Student Location. Would You Like to Overwrite Their Location?", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { action in
-            completionHandlerForOverWrite(overwrite: false)
-        }))
-        alert.addAction(UIAlertAction(title: "Overwrite", style: .Destructive, handler: { action in
-            completionHandlerForOverWrite(overwrite: true)
-        }))
-        
-        self.presentViewController(alert, animated: true, completion: nil)
+        // once you have this, run the handler completionHandler!
+        dispatch_async(dispatch_get_main_queue(), {()-> Void in
+            
+            let name = UdacityClient.sharedInstance().userFirstName! + " " + UdacityClient.sharedInstance().userLastname!
+            let alert = UIAlertController(title: "", message: "User \(name) Has Already Posted a Student Location. Would You Like to Overwrite Their Location?", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { action in
+                completionHandlerForOverWrite(overwrite: false)
+            }))
+            alert.addAction(UIAlertAction(title: "Overwrite", style: .Destructive, handler: { action in
+                completionHandlerForOverWrite(overwrite: true)
+            }))
+            
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+        }) // end main queue completion handler
     }
     
     @IBAction func refreshMapButtonPressed(sender: AnyObject) {
