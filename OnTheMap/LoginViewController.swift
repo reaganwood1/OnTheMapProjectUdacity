@@ -161,4 +161,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 //        }
 
         } // end method
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
 }
