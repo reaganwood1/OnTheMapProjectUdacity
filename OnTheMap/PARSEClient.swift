@@ -12,9 +12,6 @@ class PARSEClient: NSObject {
     
     var session = NSURLSession.sharedSession()
     
-    // stores the student objects
-    var udacityStudentInformation: [PARSEStudentInformation] = [PARSEStudentInformation]()
-    
     // stores the object for the student if it is found in the PARSE database
     var objectID: String? = nil
     

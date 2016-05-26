@@ -23,7 +23,7 @@ extension PARSEClient {
             // if no error, get the student objects and assign them to the client variable
             if (error == nil){
                 if let studentDictionaries = result[JSONResponseKeys.Results] as? [[String:AnyObject]]{
-                    self.udacityStudentInformation = self.getStudents(studentDictionaries)
+                    PARSEStudentInformation.udacityStudentInformation = self.getStudents(studentDictionaries)
                     completionHandlerForStudentInfo(retrieved: true, error: nil)
                 } else {
                     completionHandlerForStudentInfo(retrieved: false, error: "data not parsed correctly")

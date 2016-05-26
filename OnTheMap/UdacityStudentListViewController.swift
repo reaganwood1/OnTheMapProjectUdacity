@@ -19,7 +19,7 @@ class UdacityStudentListViewController: UITableViewController {
     // when row is selected, attemps to open URL link in Safari
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        let cell = PARSEClient.sharedInstance().udacityStudentInformation[indexPath.row]
+        let cell = PARSEStudentInformation.udacityStudentInformation[indexPath.row]
         
             let app = UIApplication.sharedApplication()
             if let toOpen = cell.mediaURL{
@@ -41,7 +41,7 @@ class UdacityStudentListViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         // indexes into the PARSEClient to access student information data
-        let student = PARSEClient.sharedInstance().udacityStudentInformation[indexPath.row]
+        let student = PARSEStudentInformation.udacityStudentInformation[indexPath.row]
         let cell = tableView.dequeueReusableCellWithIdentifier("studentCell")!
         cell.textLabel!.text = "\(student.firstName!) \(student.lastName!)"
         cell.detailTextLabel?.text = "\(student.mediaURL!)"
@@ -50,7 +50,7 @@ class UdacityStudentListViewController: UITableViewController {
     
     // accesses PARSEClient model to get number of rows for the tableView
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return PARSEClient.sharedInstance().udacityStudentInformation.count
+        return PARSEStudentInformation.udacityStudentInformation.count
     }
     
     // dismiss the view, present the loginViewController
