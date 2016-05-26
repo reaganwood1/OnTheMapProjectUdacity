@@ -17,6 +17,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var uxUdacitySignUpButton: UIButton!
     @IBOutlet weak var uxEmailLoginTextField: UITextField!
     @IBOutlet weak var uxPasswordLoginTextField: UITextField!
+    @IBOutlet weak var activityView: UIActivityIndicatorView!
     
     
     override func viewDidLoad() {
@@ -89,6 +90,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func loginToUdacityWithLoginAndPassword(){
+        
+        activityView.startAnimating()
+        
         UdacityClient.sharedInstance().createLoginSessionWithUdacity(uxEmailLoginTextField.text!, password: uxPasswordLoginTextField.text!) { (sessionCreated, error) in
             
             if (error == nil){
@@ -96,13 +100,27 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 {
                     self.getUserData()// finish the loginProcess by getting the user data
                 } else {
+                    
                     self.displayEmptyAlert("", message: "Invalid Email or Password", actionTitle: "Dismiss")
+                    
+                    // run the alert in the main queue because it's a member of UIKit
+                    dispatch_async(dispatch_get_main_queue(), {()-> Void in
+                        
+                        self.activityView.stopAnimating()
+                        
+                    }) // end activity main queue
                 }
             }
             else {
+                
                 self.displayEmptyAlert("", message: "Invalid Email or Password", actionTitle: "Dismiss")
+                
+                dispatch_async(dispatch_get_main_queue(), {()-> Void in
+                    
+                    self.activityView.stopAnimating()
+    
+                })
             }
-            
         }
     } // end function
     
@@ -113,6 +131,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             if (error == nil && nameRetrieved == true){
                 self.finishLogin()
             } else {
+                
+                dispatch_async(dispatch_get_main_queue(), {()-> Void in
+                    
+                    self.activityView.stopAnimating()
+                    
+                }) // end main queue
+                
                 self.displayEmptyAlert("", message: "Data could not be retrieded", actionTitle: "Ok")
             }
         }
@@ -125,6 +150,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             
                 // once you have this, run the handler completionHandler!
                 dispatch_async(dispatch_get_main_queue(), {()-> Void in
+                    
+                    self.activityView.stopAnimating()
                     
                     // perform segue to the mapVC
                     self.performSegueWithIdentifier("PresentMapTabView", sender: self)

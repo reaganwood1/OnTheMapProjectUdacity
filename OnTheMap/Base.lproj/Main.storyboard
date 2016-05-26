@@ -63,6 +63,9 @@
                                     <action selector="udacitySignUpFlow:" destination="BYZ-38-t0r" eventType="touchUpInside" id="igA-gr-Mgf"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Bqd-pn-7Ol">
+                                <rect key="frame" x="282" y="281" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.52741588694130193" blue="0.18633469286657756" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -80,12 +83,15 @@
                             <constraint firstAttribute="trailingMargin" secondItem="9yT-8s-ToQ" secondAttribute="trailing" id="ZH6-Qu-xtC"/>
                             <constraint firstItem="9yT-8s-ToQ" firstAttribute="top" secondItem="ehk-sR-UL8" secondAttribute="bottom" constant="8" id="bWt-r7-HuY"/>
                             <constraint firstItem="ogi-O1-8Qi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bkl-2J-E47"/>
+                            <constraint firstItem="Bqd-pn-7Ol" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="hXu-hs-i2p"/>
                             <constraint firstItem="oe6-cK-qgv" firstAttribute="top" secondItem="9yT-8s-ToQ" secondAttribute="bottom" constant="8" id="klw-Se-qn8"/>
                             <constraint firstAttribute="trailingMargin" secondItem="oe6-cK-qgv" secondAttribute="trailing" id="lrs-o8-tA2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ehk-sR-UL8" secondAttribute="trailing" id="mXK-2E-POr"/>
+                            <constraint firstItem="Bqd-pn-7Ol" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vsi-AL-eNj"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityView" destination="Bqd-pn-7Ol" id="8vh-Pw-oOQ"/>
                         <outlet property="uxEmailLoginTextField" destination="ogi-O1-8Qi" id="xrr-zA-elj"/>
                         <outlet property="uxLoginButton" destination="9yT-8s-ToQ" id="zUJ-GZ-Dnj"/>
                         <outlet property="uxPasswordLoginTextField" destination="ehk-sR-UL8" id="SBL-p8-Sui"/>
@@ -352,6 +358,9 @@
                             <mapView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="t8J-bx-hdu">
                                 <rect key="frame" x="0.0" y="160" width="600" height="440"/>
                             </mapView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="r8P-fp-Whj">
+                                <rect key="frame" x="282" y="281" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.94152670028148733" green="0.94775641025641022" blue="0.93446500247612196" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -369,6 +378,7 @@
                             <constraint firstItem="cvq-b0-BzN" firstAttribute="leading" secondItem="DFG-Bo-rMo" secondAttribute="leadingMargin" constant="-20" id="TyN-2C-dp0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="sH4-oh-cNf" secondAttribute="trailing" id="XVb-8g-qe2"/>
                             <constraint firstItem="Tuu-a5-xAI" firstAttribute="centerX" secondItem="DFG-Bo-rMo" secondAttribute="centerX" id="XXU-h8-jzn"/>
+                            <constraint firstItem="r8P-fp-Whj" firstAttribute="centerX" secondItem="DFG-Bo-rMo" secondAttribute="centerX" id="Ypy-sp-utp"/>
                             <constraint firstItem="Jxd-i9-TiT" firstAttribute="top" secondItem="cvq-b0-BzN" secondAttribute="bottom" constant="22" id="aCF-sV-EkR"/>
                             <constraint firstItem="sH4-oh-cNf" firstAttribute="top" secondItem="waK-bC-mpj" secondAttribute="bottom" id="arH-mp-dbD"/>
                             <constraint firstItem="cvq-b0-BzN" firstAttribute="centerX" secondItem="DFG-Bo-rMo" secondAttribute="centerX" id="eV9-03-Zfi"/>
@@ -379,12 +389,14 @@
                             <constraint firstItem="t8J-bx-hdu" firstAttribute="leading" secondItem="DFG-Bo-rMo" secondAttribute="leadingMargin" constant="-20" id="onz-Qt-Nfs"/>
                             <constraint firstAttribute="trailingMargin" secondItem="cvq-b0-BzN" secondAttribute="trailing" constant="-20" id="sA8-Ua-dEd"/>
                             <constraint firstItem="t8J-bx-hdu" firstAttribute="centerX" secondItem="DFG-Bo-rMo" secondAttribute="centerX" id="sVV-5M-of1"/>
+                            <constraint firstItem="r8P-fp-Whj" firstAttribute="centerY" secondItem="DFG-Bo-rMo" secondAttribute="centerY" id="ujT-Rg-Rv8"/>
                             <constraint firstItem="g4T-VA-tVM" firstAttribute="centerX" secondItem="DFG-Bo-rMo" secondAttribute="centerX" id="wnQ-BW-4tQ"/>
                             <constraint firstItem="t8J-bx-hdu" firstAttribute="top" secondItem="MXT-pc-jGB" secondAttribute="bottom" id="wxE-ne-See"/>
                             <constraint firstItem="MXT-pc-jGB" firstAttribute="top" secondItem="waK-bC-mpj" secondAttribute="bottom" constant="38" id="y8c-Dy-rM5"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityView" destination="r8P-fp-Whj" id="LCc-yr-4LI"/>
                         <outlet property="cancelButton" destination="sH4-oh-cNf" id="aZs-zY-Lei"/>
                         <outlet property="findOnMapButton" destination="Tuu-a5-xAI" id="ska-L8-Sba"/>
                         <outlet property="locationTextView" destination="cvq-b0-BzN" id="mDf-qU-3Ek"/>
@@ -458,6 +470,6 @@
         <image name="UdacityIcon" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="k0t-sl-lrR"/>
+        <segue reference="QEz-4k-wT9"/>
     </inferredMetricsTieBreakers>
 </document>

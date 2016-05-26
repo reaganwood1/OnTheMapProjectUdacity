@@ -22,6 +22,7 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate, UIT
     @IBOutlet weak var whereAreYouLabel: UILabel!
     @IBOutlet weak var studyingLabel: UILabel!
     @IBOutlet weak var todayLabel: UILabel!
+    @IBOutlet weak var activityView: UIActivityIndicatorView!
     
     var located: CLLocation? = nil
     var stringLocation: String? = ""
@@ -117,8 +118,11 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate, UIT
     // switch view to allow user to enter a link to share
     @IBAction func findOnMapButtonPressed(sender: AnyObject) {
         
+        activityView.startAnimating()
+        
         geoCodeLocation(locationTextView.text) { (success, error) in
             if (error == nil && success == true){
+                self.activityView.stopAnimating()
                 self.stringLocation = self.locationTextView.text
                 self.secondViewMapView.hidden = false
                 self.secondViewTextView.hidden = false
@@ -133,6 +137,7 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate, UIT
                 self.cancelButton.titleLabel?.textColor = UIColor.whiteColor()
                 self.zoomToLocation()
             }else {
+                self.activityView.stopAnimating()
                 self.displayEmptyAlert("", message: "Location could not be located", actionTitle: "Try Again")
             }
         }
