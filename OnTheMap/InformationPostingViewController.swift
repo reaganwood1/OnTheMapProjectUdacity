@@ -49,7 +49,14 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate, UIT
     func textViewDidEndEditing(textView: UITextView) {
         // reposition the text at the end of editing
         locationTextView.textAlignment = .Center
-        locationTextView.textAlignment = .Center
+        secondViewTextView.textAlignment = .Center
+        
+        if (locationTextView.text == "") {
+            locationTextView.text = "Enter Your Location Here"
+        }
+        if (secondViewTextView.text == ""){
+            secondViewTextView.text = "Enter a Link to Share"
+        }
     }
    
     
