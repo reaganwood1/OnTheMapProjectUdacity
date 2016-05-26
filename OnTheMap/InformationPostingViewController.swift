@@ -12,6 +12,7 @@ import MapKit
 
 class InformationPostingViewController: UIViewController, MKMapViewDelegate, UITextViewDelegate{
 
+    // variables representing two different views
     @IBOutlet weak var findOnMapButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var locationTextView: UITextView!
@@ -59,7 +60,6 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate, UIT
         }
     }
    
-    
     // dismissed the current view controller and presents the previous view
     @IBAction func cancelButtonPressed(sender: AnyObject) {
         
@@ -69,11 +69,12 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate, UIT
     @IBAction func submitButtonPressed(sender: AnyObject) {
         
         if (secondViewTextView.text != "Enter a Link to Share Here" || secondViewTextView.text != "") {
-            submitInfoToParse({ (success, error) in
-                if let error = error {
-                    print("error present!")
+            submitInfoToParse({ (success) in
+                if (!success) {
+                    self.displayEmptyAlert("", message: "Data could not be posted", actionTitle: "Dismiss")
+                    self.dismissViewControllerAnimated(true, completion: nil)
                 } else { //end if
-                    
+                    self.dismissViewControllerAnimated(true, completion: nil)
                     // TODO: Present the other view controller
                 }// end else
             }) // end closure
@@ -81,35 +82,39 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate, UIT
         
     } // end function
     
-    
-    func submitInfoToParse (completionHandlerForParse: (success: Bool, error: NSError?) -> Void) {
+    // submit user info to the PARSE database
+    func submitInfoToParse (completionHandlerForParse: (success: Bool) -> Void) {
         
+        // store coordinate info
         let coordinate = located?.coordinate
         let doubleLat = coordinate!.latitude
         let doubleLon = coordinate!.longitude
         let name = "\(UdacityClient.sharedInstance().userLastname) \(UdacityClient.sharedInstance().userLastname)"
+        
+        // if the user has never been added to the PARSE DB, add data
         if (PARSEClient.sharedInstance().objectID == nil) {
             PARSEClient.sharedInstance().sendToParseServerStudentInfo(doubleLat, name: name, locationString: stringLocation!, mediaURL: secondViewTextView.text, longitude: doubleLon) { (success, error) in
                 
                 if (error == nil) {
-                    self.dismissViewControllerAnimated(true, completion: nil)
+                    completionHandlerForParse(success: true)
                 } else {
-                    print("You need to display an alert view saying what went wrong here")
+                    completionHandlerForParse(success: false)
                 }
             } // end sendToParseServerStudentInfo
-        }else {
+        }else { // if the user has been added to the PARSE DB, update the user's info
             PARSEClient.sharedInstance().sendToParseServerUpdatedStudentInfo(doubleLat, name: name, locationString: stringLocation!, mediaURL: secondViewTextView.text, longitude: doubleLon) { (success, error) in
                 
                 if (error == nil){
-                    self.dismissViewControllerAnimated(true, completion: nil)
+                    completionHandlerForParse(success: true)
                 } else {
-                    print("you need to display an alert view saying what went wrong here")
+                    completionHandlerForParse(success: false)
                 }
             } // end sendToParseServerUpdatedStudentInfo
         } // end else
         
     } // end function
     
+    // switch view to allow user to enter a link to share
     @IBAction func findOnMapButtonPressed(sender: AnyObject) {
         
         geoCodeLocation(locationTextView.text) { (success, error) in
@@ -133,16 +138,17 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate, UIT
         }
     } // end function
     
-    
+    // zooms to the location the user specified
     func zoomToLocation() {
         AddAnnotation()
-        var location = located?.coordinate
-        var span = MKCoordinateSpanMake(0.002, 0.002)
-        var region = MKCoordinateRegion(center: location!, span: span)
+        let location = located?.coordinate
+        let span = MKCoordinateSpanMake(0.002, 0.002)
+        let region = MKCoordinateRegion(center: location!, span: span)
         secondViewMapView.setRegion(region, animated: true)
         
     } // end function
     
+    // adds the annotation to the temporary map
     func AddAnnotation () {
         
         // The lat and long are used to create a CLLocationCoordinates2D instance.
@@ -162,6 +168,7 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate, UIT
     self.secondViewMapView.addAnnotation(annotation)
     
     }
+    
     // Geocode the string entered by the use
     func geoCodeLocation(stringForGeoCode: String, completionHandler: (success: Bool, error: NSError?)-> Void) {
         
@@ -183,11 +190,27 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate, UIT
         
     } // end function
     
+    // specifies when the keyboard should be dismissed
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         if(text == "\n") {
             textView.resignFirstResponder()
             return false
         }
         return true
+    }
+    
+    // blanket alert view template function
+    func displayEmptyAlert(headTitle: String?, message: String?, actionTitle: String?){
+        
+        // run the alert in the main queue because it's a member of UIKit
+        dispatch_async(dispatch_get_main_queue(), {()-> Void in
+            
+            let alert = UIAlertController(title: headTitle, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: actionTitle, style: .Default, handler: { action in
+                
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+        }) // end image main queue completion handler
     }
 }

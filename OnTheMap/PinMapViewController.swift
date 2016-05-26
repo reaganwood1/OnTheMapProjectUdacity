@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import MapKit
 
+// class handles the map display of students taking the Udacity devleoper course
 class PinMapViewController: UIViewController, MKMapViewDelegate{
 
     @IBOutlet weak var mapView: MKMapView!
@@ -20,25 +21,19 @@ class PinMapViewController: UIViewController, MKMapViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-        
-        // for now, see if you can get the student information right here
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         
         self.retrieveAndDisplayStudentInfo()
-                
-            
-       
         mapView.reloadInputViews()
-        
     }
     
     // Returns the view associated with the specified annotation object
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView?{
         
-            let reuseId = "pin"
+        let reuseId = "pin"
         var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
         
         if pinView == nil {
@@ -52,8 +47,9 @@ class PinMapViewController: UIViewController, MKMapViewDelegate{
         }
         
         return pinView
-        }
+    }
     
+     // displays urls when a pin is clicked through Safari
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
         if control == view.rightCalloutAccessoryView {
@@ -61,24 +57,17 @@ class PinMapViewController: UIViewController, MKMapViewDelegate{
             if let toOpen = view.annotation?.subtitle! {
                 if (UIApplication.sharedApplication().canOpenURL(NSURL(string: toOpen)!)){
                     app.openURL(NSURL(string: toOpen)!)
-                } else {
+                } else { // display alert view if link cannot be opened
+                
+                    displayEmptyAlert("", message: "Invalid Link", actionTitle: "Dismiss")
                     
-                    let alert = UIAlertController(title: "", message: "Invalid Link", preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: { action in
-                        
-                    }))
-                    self.presentViewController(alert, animated: true, completion: nil)
                 }
-
             }
         }
         
     }
     
-    // When map is done loading, then add the data
-    func mapViewDidFinishLoadingMap(mapView: MKMapView) {
-    }
-    
+    // call to retrieve the student data from th parse server
     func retrieveAndDisplayStudentInfo() {
         
         PARSEClient.sharedInstance().getStudentInfo { (retrived, error) in
@@ -92,25 +81,32 @@ class PinMapViewController: UIViewController, MKMapViewDelegate{
                         
                     })}
                 
-            }else {
-                print(error)
+            }else { // if data couldn't be retrieved display error in the alert view
+                self.displayEmptyAlert("", message: "Data could not be retrieved", actionTitle: "Ok")
             }
         }
     }
     
+    // adds students to the mapView
     func addStudentsToMap(udacityStudents: [PARSEStudentInformation])
     {
+        // removes old student data
         mapView.removeAnnotations(allAnnotations)
+        
         var studentsLocations = [MKAnnotation]()
         
+        // iterate through each student
         for udacityStudent in udacityStudents {
             
+            // create point annotation object
             let studentPoint = MKPointAnnotation()
             
+            // get the object id to be used for overwriting data
             if (udacityStudent.firstName == UdacityClient.sharedInstance().userFirstName && udacityStudent.lastName == UdacityClient.sharedInstance().userLastname) {
                 PARSEClient.sharedInstance().objectID = udacityStudent.objectID!
                             }
             
+            // add the point object to the map
             if let longitude = udacityStudent.longitude {
                 if let latitude = udacityStudent.latitude {
                     let studentLocation = CLLocationCoordinate2DMake(latitude, longitude)
@@ -124,9 +120,11 @@ class PinMapViewController: UIViewController, MKMapViewDelegate{
             } // end if
         } // end for
         
+        // add to global annotation object
         allAnnotations = studentsLocations
     }
     
+    // logout and load the LoginVC
     @IBAction func logoutOfMapButtonPressed(sender: AnyObject) {
        
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) { () -> Void in
@@ -138,11 +136,12 @@ class PinMapViewController: UIViewController, MKMapViewDelegate{
             })}
     }
     
+    // Call to add student info to the map
     @IBAction func PostToMapButtonPressed(sender: AnyObject) {
         
         if (PARSEClient.sharedInstance().objectID == nil){
             self.performSegueWithIdentifier("PresentInformationView", sender: self)
-        } else {
+        } else { // data already exists, ask user if they would like to overwrite the existing data
             
             AskToOverWrite({ (overwrite) in
                 if (overwrite == true){
@@ -152,6 +151,7 @@ class PinMapViewController: UIViewController, MKMapViewDelegate{
         }
     }
     
+    // This function handles alert view for asking students if they would like to overwrite their existing data
     func AskToOverWrite(completionHandlerForOverWrite: (overwrite: Bool) -> Void){
         
         // once you have this, run the handler completionHandler!
@@ -171,16 +171,29 @@ class PinMapViewController: UIViewController, MKMapViewDelegate{
         }) // end main queue completion handler
     }
     
+    // refreshes the data on the map
     @IBAction func refreshMapButtonPressed(sender: AnyObject) {
         
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) { () -> Void in
             
             dispatch_async(dispatch_get_main_queue(), {() -> Void in
-                
               
                     self.retrieveAndDisplayStudentInfo()
             })}
     }
     
-    
+    // blanket alert view template function
+    func displayEmptyAlert(headTitle: String?, message: String?, actionTitle: String?){
+        
+        // run the alert in the main queue because it's a member of UIKit
+        dispatch_async(dispatch_get_main_queue(), {()-> Void in
+            
+            let alert = UIAlertController(title: headTitle, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: actionTitle, style: .Default, handler: { action in
+                
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+        }) // end image main queue completion handler
+    }
 }

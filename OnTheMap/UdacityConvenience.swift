@@ -19,7 +19,7 @@ extension UdacityClient {
         // get post data
         taskForPostMethod(Methods.Session, jsonBody: jsonBody) { (result, error) in
             // user post data
-            if (error == nil){
+            if (error == nil){ // parse the data for the sessionID
                 if let sessionInfo = result[JSONResponseKeys.Account] as? [String:AnyObject] {
                     if let sessionid = sessionInfo[JSONResponseKeys.Key] as? String{
                         self.sessionID = sessionid
@@ -41,6 +41,7 @@ extension UdacityClient {
         
         let methods = UdacityClient.Methods.Users + sessionID!
         
+        // call get method to retrive first and last name
         taskForGETMethod(methods) { (result, error) in
             
             if (error == nil) {

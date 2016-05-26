@@ -20,49 +20,58 @@ class UdacityClient: NSObject{
     
     func taskForPostMethod(method: String, jsonBody: [String:[String:AnyObject]],completionHandlerForPOST:(result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionTask {
     
-        /* 1 Set the parameters */
+        // create url
         let urlForPost = UdacityClient.Constants.coreUdacityURL + method
         let url = NSURL(string: urlForPost)!
         
+        // create muteable request
         let request = NSMutableURLRequest(URL: url)
         
+        // set method and values
         request.HTTPMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        do {
+        do { // try to create
             request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(jsonBody, options: .PrettyPrinted)
         }
         catch {
-            print ("json error: \(error)")
+            let userInfo = [NSLocalizedDescriptionKey : "Could not create jsonbody"]
+            completionHandlerForPOST(result: nil, error: NSError(domain: "parseJSONData", code: 1, userInfo: userInfo))
         }
         
         // Make a request
         
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
             
+            // function for creating error messages
             func sendError(error: String) {
                 print(error)
                 let userInfo = [NSLocalizedDescriptionKey: error]
                 completionHandlerForPOST(result: nil, error: NSError(domain: "taskForGetMethod", code: 1, userInfo: userInfo))
             }
             
+            // check for error
             guard (error == nil) else {
                 sendError("There was an error with your request: \(error)")
                 return
             }
             
+            // check for successful status code
             guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
                 sendError("Your request returned a status code other than 2xx!")
                 return
             }
             
+            // get the data
             guard let data = data else {
                 sendError("No data was returned by the request!")
                 return
             }
             
+            // get the data in the correct range
             let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5))
             
+            // parse the data
             self.parseJSONData(newData, completionHandler: completionHandlerForPOST)
 
         } // end closure
@@ -76,35 +85,43 @@ class UdacityClient: NSObject{
     // get method for gettting info from the udacity server
     func taskForGETMethod (method: String, taskForGetHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionTask {
         
+        // create the url
         let url = Constants.coreUdacityURL + method
         let nsurl = NSURL (string: url)
         
+        // create request
         let request = NSURLRequest(URL: nsurl!)
         let mutableRequest = NSMutableURLRequest(URL: nsurl!)
        
+        // create a session to parse the data
         let task = session.dataTaskWithRequest(mutableRequest) { data, response, error in
             
+            // function for printing and setting error info
             func sendError(error: String) {
                 print(error)
                 let userInfo = [NSLocalizedDescriptionKey: error]
                 taskForGetHandler(result: nil, error: NSError(domain: "taskForGetMethod", code: 1, userInfo: userInfo))
             }
             
+            // check for error
             guard (error == nil) else {
                 sendError("There was an error with your request: \(error)")
                 return
             }
             
+            // check for successful status code
             guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
                 sendError("Your request returned a status code other than 2xx!")
                 return
             }
             
+            // set the data
             guard let data = data else {
                 sendError("No data was returned by the request!")
                 return
             }
             
+            // get data in range and parse it
             let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5))
             self.parseJSONData(newData, completionHandler: taskForGetHandler)
             
@@ -128,23 +145,7 @@ class UdacityClient: NSObject{
             completionHandler(result: nil, error: NSError(domain: "parseJSONData", code: 1, userInfo: userInfo))
         }
     }
-    // create a URL from parameters
-    private func udacityURLFromParameters(parameters: [String:AnyObject], withPathExtension: String? = nil) -> NSURL {
-        
-        let components = NSURLComponents()
-        components.scheme = UdacityClient.Constants.ApiScheme
-        components.host = UdacityClient.Constants.ApiHost
-        //components.path = UdacityClient.Constants.ApiPath + (withPathExtension ?? "")
-        components.path = withPathExtension ?? ""
-        components.queryItems = [NSURLQueryItem]()
-        
-        for (key, value) in parameters {
-            let queryItem = NSURLQueryItem(name: key, value: "\(value)")
-            components.queryItems!.append(queryItem)
-        }
-        
-        return components.URL!
-    }
+  
     
     // MARK: Shared Instance
     

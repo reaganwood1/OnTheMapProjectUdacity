@@ -8,6 +8,7 @@
 
 import Foundation
 
+// struct representing student data retrieved from the PARSE server
 struct PARSEStudentInformation {
     
     var firstName: String? = nil
@@ -18,21 +19,14 @@ struct PARSEStudentInformation {
     var mediaURL: String? = nil
     var objectID: String? = nil
     
+    // constructor for each new student object
     init(newInfo: [String:AnyObject]){
-        firstName = newInfo[PARSEClient.JSONResponseKeys.FirstName] as! String
-        lastName = newInfo[PARSEClient.JSONResponseKeys.LastName] as! String
-        latitude = newInfo[PARSEClient.JSONResponseKeys.Latitude] as! Double
-        longitude = newInfo[PARSEClient.JSONResponseKeys.Longitude] as! Double
-        mapString = newInfo[PARSEClient.JSONResponseKeys.MapString] as! String
-        mediaURL = newInfo[PARSEClient.JSONResponseKeys.MediaURL] as! String
-        objectID = newInfo[PARSEClient.JSONResponseKeys.ObjectID] as! String
-    }
-    
-    static func compareStudentObjects(student1: PARSEStudentInformation, student2: PARSEStudentInformation) -> Bool{
-        if (student1.latitude == student2.latitude && student1.longitude == student2.longitude && student1.mapString == student2.mapString && student1.mediaURL == student2.mediaURL) {
-            return true
-        }else {
-            return false
-        }
+        firstName = newInfo[PARSEClient.JSONResponseKeys.FirstName] as? String
+        lastName = newInfo[PARSEClient.JSONResponseKeys.LastName] as? String
+        latitude = newInfo[PARSEClient.JSONResponseKeys.Latitude] as? Double
+        longitude = newInfo[PARSEClient.JSONResponseKeys.Longitude] as? Double
+        mapString = newInfo[PARSEClient.JSONResponseKeys.MapString] as? String
+        mediaURL = newInfo[PARSEClient.JSONResponseKeys.MediaURL] as? String
+        objectID = newInfo[PARSEClient.JSONResponseKeys.ObjectID] as? String
     }
 }
