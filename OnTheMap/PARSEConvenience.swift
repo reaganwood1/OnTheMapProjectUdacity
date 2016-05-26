@@ -15,7 +15,7 @@ extension PARSEClient {
     func getStudentInfo(completionHandlerForStudentInfo: (retrieved: Bool, error: String?) -> Void) {
         
         // set the methods
-        let methods = Methods.StudentLocations
+        let methods = Methods.StudentLocations + "?order=-updatedAt"
         
         // get the data
         taskForGETMethod(methods) { (result, error) in
