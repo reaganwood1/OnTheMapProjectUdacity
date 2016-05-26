@@ -81,8 +81,7 @@ class UdacityClient: NSObject{
         
         let request = NSURLRequest(URL: nsurl!)
         let mutableRequest = NSMutableURLRequest(URL: nsurl!)
-        
-        print (url)
+       
         let task = session.dataTaskWithRequest(mutableRequest) { data, response, error in
             
             func sendError(error: String) {

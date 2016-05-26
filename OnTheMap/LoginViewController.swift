@@ -25,6 +25,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         uxPasswordLoginTextField.tag = 1
         uxEmailLoginTextField.tag = 2
         // Do any additional setup after loading the view, typically from a nib.
+        uxUdacitySignUpButton.titleLabel?.adjustsFontSizeToFitWidth = true
     }
     
     override func didReceiveMemoryWarning() {

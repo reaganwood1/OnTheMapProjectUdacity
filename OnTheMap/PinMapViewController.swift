@@ -14,6 +14,8 @@ class PinMapViewController: UIViewController, MKMapViewDelegate{
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var logoutButton: UIBarButtonItem!
+    var postingStudent: PARSEStudentInformation?
+    var allAnnotations = [MKAnnotation]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +26,9 @@ class PinMapViewController: UIViewController, MKMapViewDelegate{
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        retrieveAndDisplayStudentInfo()
+        mapView.reloadInputViews()
+        
     }
     
     // Returns the view associated with the specified annotation object
@@ -58,8 +63,6 @@ class PinMapViewController: UIViewController, MKMapViewDelegate{
     
     // When map is done loading, then add the data
     func mapViewDidFinishLoadingMap(mapView: MKMapView) {
-        retrieveAndDisplayStudentInfo()
-        mapView.reloadInputViews()
     }
     
     func retrieveAndDisplayStudentInfo() {
@@ -83,6 +86,7 @@ class PinMapViewController: UIViewController, MKMapViewDelegate{
     
     func addStudentsToMap(udacityStudents: [PARSEStudentInformation])
     {
+        mapView.removeAnnotations(allAnnotations)
         var studentsLocations = [MKAnnotation]()
         
         for udacityStudent in udacityStudents {
@@ -91,7 +95,7 @@ class PinMapViewController: UIViewController, MKMapViewDelegate{
             
             if (udacityStudent.firstName == UdacityClient.sharedInstance().userFirstName && udacityStudent.lastName == UdacityClient.sharedInstance().userLastname) {
                 PARSEClient.sharedInstance().objectID = udacityStudent.objectID!
-            }
+                            }
             
             if let longitude = udacityStudent.longitude {
                 if let latitude = udacityStudent.latitude {
@@ -102,9 +106,11 @@ class PinMapViewController: UIViewController, MKMapViewDelegate{
                     studentPoint.subtitle = udacityStudent.mediaURL!
                     studentsLocations.append(studentPoint)
                     mapView.addAnnotation(studentPoint)
-                }
-            }
-        }
+                } // end if
+            } // end if
+        } // end for
+        
+        allAnnotations = studentsLocations
     }
     
     @IBAction func logoutOfMapButtonPressed(sender: AnyObject) {

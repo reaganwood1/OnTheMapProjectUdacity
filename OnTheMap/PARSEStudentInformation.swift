@@ -27,4 +27,12 @@ struct PARSEStudentInformation {
         mediaURL = newInfo[PARSEClient.JSONResponseKeys.MediaURL] as! String
         objectID = newInfo[PARSEClient.JSONResponseKeys.ObjectID] as! String
     }
+    
+    static func compareStudentObjects(student1: PARSEStudentInformation, student2: PARSEStudentInformation) -> Bool{
+        if (student1.latitude == student2.latitude && student1.longitude == student2.longitude && student1.mapString == student2.mapString && student1.mediaURL == student2.mediaURL) {
+            return true
+        }else {
+            return false
+        }
+    }
 }

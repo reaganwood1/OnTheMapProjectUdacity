@@ -167,7 +167,9 @@ class PARSEClient: NSObject {
         // Parse the JSON data and return through the completion handler
         var parsedResult: AnyObject!
         do {
+            
             parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+    
             completionHandler(result: parsedResult, error: nil)
         } catch {
             let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]

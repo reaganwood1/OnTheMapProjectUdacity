@@ -71,6 +71,7 @@ class UdacityStudentListViewController: UITableViewController {
         } // end parseClient
     } // end func
     
+    
     @IBAction func addLocationButtonPushed(sender: AnyObject) {
         
         if (PARSEClient.sharedInstance().objectID == nil){
