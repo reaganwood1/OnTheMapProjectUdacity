@@ -49,8 +49,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // Check to see if secureText needs to be added to the password textField
     func textFieldDidBeginEditing(textField: UITextField) {
-        if (textField.tag == 1){
+        if (textField.tag == 1 && textField.text == "Password") {
+            textField.text = ""
             textField.secureTextEntry = true
+        }
+        
+        if (textField.tag == 2 && textField.text == "Email") {
+            textField.text = ""
         }
     }
     
