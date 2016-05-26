@@ -91,36 +91,42 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func loginToUdacityWithLoginAndPassword(){
         
-        activityView.startAnimating()
-        
-        UdacityClient.sharedInstance().createLoginSessionWithUdacity(uxEmailLoginTextField.text!, password: uxPasswordLoginTextField.text!) { (sessionCreated, error) in
+        if (Reachability.isConnectedToNetwork()) { // source: http://www.brianjcoleman.com/tutorial-check-for-internet-connection-in-swift/
             
-            if (error == nil){
-                if (sessionCreated == true)
-                {
-                    self.getUserData()// finish the loginProcess by getting the user data
-                } else {
+            activityView.startAnimating()
+            
+            UdacityClient.sharedInstance().createLoginSessionWithUdacity(uxEmailLoginTextField.text!, password: uxPasswordLoginTextField.text!) { (sessionCreated, error) in
+                
+                if (error == nil){
+                    if (sessionCreated == true)
+                    {
+                        self.getUserData()// finish the loginProcess by getting the user data
+                    } else {
+                        
+                        self.displayEmptyAlert("", message: "Invalid Email or Password", actionTitle: "Dismiss")
+                        
+                        // run the alert in the main queue because it's a member of UIKit
+                        dispatch_async(dispatch_get_main_queue(), {()-> Void in
+                            
+                            self.activityView.stopAnimating()
+                            
+                        }) // end activity main queue
+                    }
+                }
+                else {
                     
                     self.displayEmptyAlert("", message: "Invalid Email or Password", actionTitle: "Dismiss")
                     
-                    // run the alert in the main queue because it's a member of UIKit
                     dispatch_async(dispatch_get_main_queue(), {()-> Void in
                         
                         self.activityView.stopAnimating()
                         
-                    }) // end activity main queue
+                    })
                 }
             }
-            else {
-                
-                self.displayEmptyAlert("", message: "Invalid Email or Password", actionTitle: "Dismiss")
-                
-                dispatch_async(dispatch_get_main_queue(), {()-> Void in
-                    
-                    self.activityView.stopAnimating()
-    
-                })
-            }
+
+        } else { // not connected to the network
+            displayEmptyAlert("", message: "No Internet Connection Detected", actionTitle: "Ok")
         }
     } // end function
     

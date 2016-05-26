@@ -68,19 +68,22 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate, UIT
     }
     
     @IBAction func submitButtonPressed(sender: AnyObject) {
-        
-        if (secondViewTextView.text != "Enter a Link to Share Here" || secondViewTextView.text != "") {
-            submitInfoToParse({ (success) in
-                if (!success) {
-                    self.displayEmptyAlert("", message: "Data could not be posted", actionTitle: "Dismiss")
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                } else { //end if
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                    // TODO: Present the other view controller
-                }// end else
-            }) // end closure
-        } // end if
-        
+        if (Reachability.isConnectedToNetwork()) {
+            if (secondViewTextView.text != "Enter a Link to Share Here" || secondViewTextView.text != "") {
+                submitInfoToParse({ (success) in
+                    
+                    if (!success) {
+                        self.displayEmptyAlert("", message: "Data could not be posted", actionTitle: "Dismiss")
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                    } else { //end if
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                        // TODO: Present the other view controller
+                    }// end else
+                }) // end closure
+            } // end if
+        } else { // end connection if, else no connection
+            displayEmptyAlert("", message: "No Internet Connection Detected", actionTitle: "Try Again")
+        }
     } // end function
     
     // submit user info to the PARSE database

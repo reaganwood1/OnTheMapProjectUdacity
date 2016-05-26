@@ -26,6 +26,7 @@
 		7FCC43BF1CED05510052AD40 /* PARSEStudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCC43BE1CED05510052AD40 /* PARSEStudentInformation.swift */; };
 		7FCC43C11CED4D400052AD40 /* UdacityStudentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCC43C01CED4D400052AD40 /* UdacityStudentListViewController.swift */; };
 		7FCC43C31CEF70100052AD40 /* InformationPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCC43C21CEF70100052AD40 /* InformationPostingViewController.swift */; };
+		7FCC43C51CF78A8C0052AD40 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCC43C41CF78A8C0052AD40 /* Reachability.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		7FCC43BE1CED05510052AD40 /* PARSEStudentInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PARSEStudentInformation.swift; sourceTree = "<group>"; };
 		7FCC43C01CED4D400052AD40 /* UdacityStudentListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityStudentListViewController.swift; sourceTree = "<group>"; };
 		7FCC43C21CEF70100052AD40 /* InformationPostingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationPostingViewController.swift; sourceTree = "<group>"; };
+		7FCC43C41CF78A8C0052AD40 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 		7F850B361CE93C3600E5BCD1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7FCC43C41CF78A8C0052AD40 /* Reachability.swift */,
 				7F850B3A1CE93CED00E5BCD1 /* Clients */,
 			);
 			name = Model;
@@ -331,6 +334,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FCC43C51CF78A8C0052AD40 /* Reachability.swift in Sources */,
 				7FCC43BF1CED05510052AD40 /* PARSEStudentInformation.swift in Sources */,
 				7F850B441CEA261400E5BCD1 /* LoginViewController.swift in Sources */,
 				7FCC43B51CEC014A0052AD40 /* PinMapViewController.swift in Sources */,
