@@ -133,7 +133,7 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate, UIT
                 self.cancelButton.titleLabel?.textColor = UIColor.whiteColor()
                 self.zoomToLocation()
             }else {
-                print("display message here for non-correct output")
+                self.displayEmptyAlert("", message: "Location could not be located", actionTitle: "Try Again")
             }
         }
     } // end function

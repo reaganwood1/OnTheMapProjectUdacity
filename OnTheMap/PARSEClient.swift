@@ -70,7 +70,6 @@ class PARSEClient: NSObject {
         
         // create the url
         let urlForPost = Constants.coreParseURL + method!
-        print (urlForPost)
         let url = NSURL(string: urlForPost)!
         
         // create a mutable request
@@ -133,7 +132,6 @@ class PARSEClient: NSObject {
         
         // create the url
         let urlForPost = Constants.coreParseURL + method!
-        print (urlForPost)
         let url = NSURL(string: urlForPost)!
         
         // create the mutable request

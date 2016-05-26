@@ -113,7 +113,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             if (error == nil && nameRetrieved == true){
                 self.finishLogin()
             } else {
-                print("name info was not retrived successfully")
+                self.displayEmptyAlert("", message: "Data could not be retrieded", actionTitle: "Ok")
             }
         }
     }
