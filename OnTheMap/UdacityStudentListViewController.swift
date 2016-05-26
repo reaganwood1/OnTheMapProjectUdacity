@@ -16,6 +16,22 @@ class UdacityStudentListViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+        let cell = PARSEClient.sharedInstance().udacityStudentInformation[indexPath.row]
+        
+            let app = UIApplication.sharedApplication()
+            if let toOpen = cell.mediaURL{
+                if (UIApplication.sharedApplication().canOpenURL(NSURL(string: toOpen)!)){
+                    app.openURL(NSURL(string: toOpen)!)
+                } else {
+                    
+                    let alert = UIAlertController(title: "", message: "Invalid Link", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: { action in
+                        
+                    }))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                }
+                
+            }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -40,7 +56,7 @@ class UdacityStudentListViewController: UITableViewController {
                 self.dismissViewControllerAnimated(true, completion: nil)
                 
             })}
-    } // func
+    } // end func
     
     @IBAction func refreshButtonPressed(sender: AnyObject) {
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) { () -> Void in

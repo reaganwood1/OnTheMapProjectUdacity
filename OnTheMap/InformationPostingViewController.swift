@@ -66,6 +66,7 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate, UIT
                 if let error = error {
                     print("error present!")
                 } else { //end if
+                    
                     // TODO: Present the other view controller
                 }// end else
             }) // end closure

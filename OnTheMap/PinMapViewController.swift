@@ -26,7 +26,11 @@ class PinMapViewController: UIViewController, MKMapViewDelegate{
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        retrieveAndDisplayStudentInfo()
+        
+        self.retrieveAndDisplayStudentInfo()
+                
+            
+       
         mapView.reloadInputViews()
         
     }
@@ -55,7 +59,17 @@ class PinMapViewController: UIViewController, MKMapViewDelegate{
         if control == view.rightCalloutAccessoryView {
             let app = UIApplication.sharedApplication()
             if let toOpen = view.annotation?.subtitle! {
-                app.openURL(NSURL(string: toOpen)!)
+                if (UIApplication.sharedApplication().canOpenURL(NSURL(string: toOpen)!)){
+                    app.openURL(NSURL(string: toOpen)!)
+                } else {
+                    
+                    let alert = UIAlertController(title: "", message: "Invalid Link", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: { action in
+                        
+                    }))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                }
+
             }
         }
         
