@@ -28,7 +28,7 @@ extension PARSEClient {
                 } else {
                     completionHandlerForStudentInfo(retrieved: false, error: "data not parsed correctly")
                 }
-            } else {
+            } else { // result not retrived successfully
                 completionHandlerForStudentInfo(retrieved: false, error: "The result was not retrieved")
             }
         }

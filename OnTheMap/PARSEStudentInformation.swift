@@ -11,6 +11,7 @@ import Foundation
 // struct representing student data retrieved from the PARSE server
 struct PARSEStudentInformation {
     
+    // variables of the struct
     var firstName: String? = nil
     var lastName: String? = nil
     var latitude: Double? = nil

@@ -121,7 +121,7 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate, UIT
         activityView.startAnimating()
         
         geoCodeLocation(locationTextView.text) { (success, error) in
-            if (error == nil && success == true){
+            if (error == nil && success == true){ // switch the view by hiding and showing certain views
                 self.activityView.stopAnimating()
                 self.stringLocation = self.locationTextView.text
                 self.secondViewMapView.hidden = false
@@ -174,7 +174,7 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate, UIT
     
     }
     
-    // Geocode the string entered by the use
+    // Geocode the string entered by the use, help:// http://mhorga.org/2015/08/14/geocoding-in-ios.html //
     func geoCodeLocation(stringForGeoCode: String, completionHandler: (success: Bool, error: NSError?)-> Void) {
         
         
