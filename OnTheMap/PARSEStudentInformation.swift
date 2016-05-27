@@ -11,9 +11,6 @@ import Foundation
 // struct representing student data retrieved from the PARSE server
 struct PARSEStudentInformation {
     
-     // stores the student objects
-    static var udacityStudentInformation: [PARSEStudentInformation] = [PARSEStudentInformation]()
-    
     // variables of the struct
     var firstName: String? = nil
     var lastName: String? = nil

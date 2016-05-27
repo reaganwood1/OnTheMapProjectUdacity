@@ -18,6 +18,7 @@
 		7F850B401CEA201900E5BCD1 /* UdacityConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F850B3F1CEA201900E5BCD1 /* UdacityConvenience.swift */; };
 		7F850B441CEA261400E5BCD1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F850B431CEA261400E5BCD1 /* LoginViewController.swift */; };
 		7F850B461CEA3D0C00E5BCD1 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F850B451CEA3D0C00E5BCD1 /* GCDBlackBox.swift */; };
+		7FA6BA531CF7C4EC001352B4 /* StudentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA6BA521CF7C4EC001352B4 /* StudentData.swift */; };
 		7FCC43B51CEC014A0052AD40 /* PinMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCC43B41CEC014A0052AD40 /* PinMapViewController.swift */; };
 		7FCC43B71CECF26D0052AD40 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FCC43B61CECF26D0052AD40 /* MapKit.framework */; };
 		7FCC43B91CECFC6E0052AD40 /* PARSEClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCC43B81CECFC6E0052AD40 /* PARSEClient.swift */; };
@@ -64,6 +65,7 @@
 		7F850B3F1CEA201900E5BCD1 /* UdacityConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConvenience.swift; sourceTree = "<group>"; };
 		7F850B431CEA261400E5BCD1 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7F850B451CEA3D0C00E5BCD1 /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
+		7FA6BA521CF7C4EC001352B4 /* StudentData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentData.swift; sourceTree = "<group>"; };
 		7FCC43B41CEC014A0052AD40 /* PinMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinMapViewController.swift; sourceTree = "<group>"; };
 		7FCC43B61CECF26D0052AD40 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		7FCC43B81CECFC6E0052AD40 /* PARSEClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PARSEClient.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 		7F850B361CE93C3600E5BCD1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7FA6BA521CF7C4EC001352B4 /* StudentData.swift */,
 				7FCC43C41CF78A8C0052AD40 /* Reachability.swift */,
 				7F850B3A1CE93CED00E5BCD1 /* Clients */,
 			);
@@ -348,6 +351,7 @@
 				7FCC43BB1CECFC820052AD40 /* PARSEConvenience.swift in Sources */,
 				7F850B461CEA3D0C00E5BCD1 /* GCDBlackBox.swift in Sources */,
 				7FCC43B91CECFC6E0052AD40 /* PARSEClient.swift in Sources */,
+				7FA6BA531CF7C4EC001352B4 /* StudentData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

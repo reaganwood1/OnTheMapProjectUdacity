@@ -14,8 +14,8 @@ extension PARSEClient {
     // function retrieves student information from the PARSE database
     func getStudentInfo(completionHandlerForStudentInfo: (retrieved: Bool, error: String?) -> Void) {
         
-        // set the methods
-        let methods = Methods.StudentLocations + "?order=-updatedAt"
+        // set the methods, student locations, order by time updated, and set limit to 100
+        let methods = Methods.StudentLocations + Methods.UpdatedAt + "&" + Methods.Limit100
         
         // get the data
         taskForGETMethod(methods) { (result, error) in
@@ -23,7 +23,7 @@ extension PARSEClient {
             // if no error, get the student objects and assign them to the client variable
             if (error == nil){
                 if let studentDictionaries = result[JSONResponseKeys.Results] as? [[String:AnyObject]]{
-                    PARSEStudentInformation.udacityStudentInformation = self.getStudents(studentDictionaries)
+                    StudentData.sharedInstance().udacityStudentInformation = self.getStudents(studentDictionaries)
                     completionHandlerForStudentInfo(retrieved: true, error: nil)
                 } else {
                     completionHandlerForStudentInfo(retrieved: false, error: "data not parsed correctly")

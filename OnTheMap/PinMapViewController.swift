@@ -77,7 +77,7 @@ class PinMapViewController: UIViewController, MKMapViewDelegate{
                     
                     dispatch_async(dispatch_get_main_queue(), {() -> Void in
                         
-                        self.addStudentsToMap(PARSEStudentInformation.udacityStudentInformation)
+                        self.addStudentsToMap(StudentData.sharedInstance().udacityStudentInformation)
                         
                     })}
                 

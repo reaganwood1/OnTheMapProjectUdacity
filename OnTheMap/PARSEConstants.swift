@@ -19,6 +19,8 @@ extension PARSEClient{
     
     struct Methods {
         static let StudentLocations = "StudentLocation"
+        static let UpdatedAt = "?order=-updatedAt"
+        static let Limit100 = "?limit=100"
     }
     
     struct JSONResponseKeys {
