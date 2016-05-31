@@ -355,7 +355,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="no"/>
                                 <dataDetectorType key="dataDetectorTypes" address="YES"/>
                             </textView>
-                            <mapView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="t8J-bx-hdu">
+                            <mapView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t8J-bx-hdu">
                                 <rect key="frame" x="0.0" y="160" width="600" height="440"/>
                             </mapView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="r8P-fp-Whj">
